@@ -1,0 +1,160 @@
+/* ── Modulos overrides ── */
+:root {
+  --white-2: #F5F8FC;
+  --ink-mid: #54708A;
+  --ink-dim: #7A97B2;
+  --site-max: 1240px;
+  --page-pad: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+body { background: linear-gradient(180deg, #F7FAFD 0%, #EDF4FA 100%) }
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 64px;
+  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 48%, #2F86CE 100%);
+  color: var(--white);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: auto auto -120px -80px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 70%);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -120px; right: -40px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 72%);
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--site-max);
+  margin: 0 auto;
+  padding: clamp(4rem,8vw,6rem) var(--page-pad) clamp(2.5rem,5vw,3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .4rem .8rem;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  font-family: 'Montserrat', sans-serif;
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.hero h1 {
+  max-width: 13ch;
+  margin: 1rem 0 .85rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.3rem, 5vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -.03em;
+}
+.hero p { max-width: 64ch; margin: 0 auto; color: rgba(255,255,255,.86); font-size: 1rem; line-height: 1.8 }
+
+/* ── Layout ── */
+.layout {
+  max-width: var(--site-max);
+  margin: 0 auto;
+  padding: 2rem var(--page-pad) 4rem;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  position: sticky;
+  top: 88px;
+  align-self: start;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+}
+.sidebar-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: .8rem;
+}
+.sidebar nav { display: flex; flex-direction: column; gap: .35rem }
+.sidebar a { padding: .7rem .8rem; border-radius: 12px; font-size: .88rem; color: var(--ink-mid); transition: background .2s, color .2s }
+.sidebar a:hover, .sidebar a.active { background: var(--blue-soft); color: var(--blue); font-weight: 700 }
+
+/* ── Content ── */
+.content { display: flex; flex-direction: column; gap: 1.5rem }
+.section { padding: 1.25rem 0 0 }
+.section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.4rem }
+.section h2 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: clamp(1.6rem, 2.8vw, 2.35rem); line-height: 1.05; letter-spacing: -.02em }
+.section p { margin: .35rem 0 0; color: var(--ink-mid); line-height: 1.75; max-width: 62ch }
+.section-count {
+  padding: .65rem .85rem;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  font-family: 'Montserrat', sans-serif;
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--ink-mid);
+}
+
+/* ── Cards ── */
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem }
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+  min-height: 180px;
+  padding: 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F9FBFD 100%);
+}
+.card-top { display: flex; align-items: center; gap: .8rem }
+.icon {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: var(--blue-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  flex-shrink: 0;
+}
+.icon svg { width: 22px; height: 22px; stroke: currentColor }
+.card h3 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.2 }
+.card p { margin: 0; color: var(--ink-mid); line-height: 1.7; font-size: .92rem }
+
+/* ── Responsive ── */
+@media (max-width: 980px) {
+  .layout { grid-template-columns: 1fr }
+  .sidebar { position: static; overflow: auto }
+  .sidebar nav { flex-direction: row; flex-wrap: nowrap }
+  .sidebar a { white-space: nowrap }
+}
+@media (max-width: 760px) {
+  .cards { grid-template-columns: 1fr }
+}
+
