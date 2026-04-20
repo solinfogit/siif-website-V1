@@ -1,8 +1,8 @@
 const nav = document.getElementById('nav');
-const heroEl = document.querySelector('.hero');
+const heroEl = document.querySelector('.hero') || document.querySelector('.nos-hero');
 
 function checkNav() {
-  nav.classList.toggle('scrolled', window.scrollY > heroEl.offsetHeight - 80);
+  nav.classList.toggle('scrolled', window.scrollY > (heroEl ? heroEl.offsetHeight - 80 : 50));
 }
 window.addEventListener('scroll', checkNav, { passive: true });
 checkNav();
@@ -20,6 +20,29 @@ if (navToggle) {
       navToggle.setAttribute('aria-expanded', 'false');
       navToggle.setAttribute('aria-label', 'Abrir menú');
     });
+  });
+}
+
+/* ── Access dropdown ── */
+const accessWrap = nav.querySelector('.nav-access-wrap');
+const accessBtn  = accessWrap && accessWrap.querySelector('.nav-access');
+if (accessBtn) {
+  accessBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = accessWrap.classList.toggle('open');
+    accessBtn.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', () => {
+    accessWrap.classList.remove('open');
+    accessBtn.setAttribute('aria-expanded', 'false');
+  });
+  accessWrap.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      accessWrap.classList.remove('open');
+      accessBtn.setAttribute('aria-expanded', 'false');
+      accessBtn.focus();
+    }
   });
 }
 
