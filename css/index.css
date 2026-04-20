@@ -154,6 +154,18 @@
 .feat-text { max-width: var(--text-width); position: relative; z-index: 2 }
 .feat-h { font-family: 'Montserrat', sans-serif; font-size: clamp(1.3rem,2.5vw,1.85rem); font-weight: 800; color: var(--ink); margin-bottom: .75rem }
 .feat-body { font-size: .95rem; color: var(--ink-mid); line-height: 1.78; margin-bottom: 1.3rem }
+.feat-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem }
+.feat-link {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-family: 'Montserrat', sans-serif; font-size: .74rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--blue); border: 2px solid var(--line);
+  padding: .55rem 1.1rem; border-radius: 4px;
+  transition: border-color .2s, background .2s;
+}
+.feat-link:hover { border-color: var(--blue); background: var(--blue-soft) }
+.feat-link--wa { color: #25D366; border-color: rgba(37,211,102,.25) }
+.feat-link--wa:hover { border-color: #25D366; background: rgba(37,211,102,.07) }
 .feat-body strong { color: var(--ink); font-weight: 600 }
 .checks { list-style: none; display: flex; flex-direction: column; gap: .5rem }
 .checks li { font-size: .88rem; color: var(--ink-mid); display: flex; align-items: center; gap: .6rem; line-height: 1.5 }
