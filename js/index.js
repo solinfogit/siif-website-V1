@@ -55,3 +55,21 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: .08 });
 document.querySelectorAll('.sr').forEach(el => io.observe(el));
+
+/* ── Active nav page ── */
+(function () {
+  const p = window.location.pathname;
+  const isHome = p === '/' || p.endsWith('/index.html');
+  document.querySelectorAll('.nav-links > li > a').forEach(function (a) {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('http') || href === '#contacto' || href === '#') return;
+    const clean = href.replace(/^\.\//, '').split('#')[0];
+    const cleanNoExt = clean.replace(/\.html$/, '');
+    if (
+      (clean === '' && isHome) ||
+      (clean && (p.endsWith('/' + clean) || p.endsWith('/' + cleanNoExt)))
+    ) {
+      a.classList.add('active');
+    }
+  });
+}());

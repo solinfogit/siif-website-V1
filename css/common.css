@@ -77,6 +77,17 @@ h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; line-height: 1.15 }
   transition: color .35s;
 }
 .nav-links a:hover { color: var(--white) }
+.nav-links a.active {
+  color: var(--white) !important;
+  background: rgba(255,255,255,.13);
+  border-radius: 4px;
+  padding: .2rem .55rem;
+  margin: -.2rem -.55rem;
+}
+#nav.scrolled .nav-links a.active {
+  color: var(--blue) !important;
+  background: rgba(18,100,168,.09);
+}
 /* ── Access dropdown button ── */
 .nav-access-wrap { position: relative }
 .nav-access {
@@ -282,6 +293,18 @@ a.access-item:hover .access-item-ext { opacity: .85 }
   }
   .nav-mob-access a:hover { color: var(--white) }
   .nav-mob-disabled span { opacity: .4; cursor: not-allowed }
+  .nav-links a.active {
+    padding: .9rem var(--page-pad);
+    padding-left: calc(var(--page-pad) - 3px);
+    margin: 0;
+    border-left: 3px solid rgba(255,255,255,.6);
+    border-radius: 0;
+    background: rgba(255,255,255,.07);
+  }
+  #nav.scrolled .nav-links a.active {
+    border-left-color: var(--blue);
+    background: rgba(18,100,168,.05);
+  }
   #nav.open .nav-links { max-height: 80vh }
   #nav.scrolled .nav-links { background: var(--white) }
   #nav.scrolled .nav-links-sep { background: rgba(0,0,0,.08) }
