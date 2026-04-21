@@ -395,3 +395,128 @@
   color: var(--blue-deep);
 }
 .btn-white:hover { background: var(--blue-soft); color: var(--blue-deep) }
+
+/* ── Presencia Nacional ── */
+.s-locations {
+  padding: clamp(4rem, 9vw, 7rem) var(--page-pad);
+  background: var(--white-2);
+}
+.s-locations .wrap { max-width: var(--site-max); margin: 0 auto }
+.locs-hd {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.locs-hd .sec-title { margin-top: .75rem }
+.locs-hd .sec-body { margin-top: .85rem }
+.locs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+.loc-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 2px 20px rgba(11,33,56,.06);
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .3s var(--ease), transform .3s var(--ease);
+}
+.loc-card:hover {
+  box-shadow: 0 10px 40px rgba(11,33,56,.11);
+  transform: translateY(-3px);
+}
+.loc-card--main { border-color: rgba(18,100,168,.35) }
+.loc-card--main::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue) 0%, #3E9BD4 100%);
+}
+.loc-marker {
+  width: 32px;
+  height: 32px;
+  background: var(--blue-soft);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.loc-marker svg { width: 16px; height: 16px }
+.loc-marker--main { background: var(--blue) }
+.loc-marker--main svg path, .loc-marker--main svg circle { stroke: var(--white) }
+.loc-badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .22rem .65rem;
+  border-radius: 20px;
+  background: var(--blue);
+  color: var(--white);
+  margin-bottom: .9rem;
+}
+.loc-badge--sec { background: var(--blue-soft); color: var(--blue) }
+.loc-city {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: .18rem;
+  line-height: 1.1;
+}
+.loc-region {
+  font-size: .72rem;
+  color: var(--ink-dim);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+.loc-address {
+  font-style: normal;
+  font-size: .88rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  border-left: 2px solid var(--line);
+  padding-left: .85rem;
+  margin-bottom: 1.25rem;
+}
+.loc-desc {
+  font-size: .88rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  border-left: 2px solid var(--line);
+  padding-left: .85rem;
+}
+.loc-actions {
+  display: flex;
+  gap: .65rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+.loc-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--blue);
+  border: 1.5px solid rgba(18,100,168,.35);
+  padding: .32rem .8rem;
+  border-radius: 4px;
+  transition: all .25s;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+.loc-link:hover { background: var(--blue); color: var(--white); border-color: var(--blue) }
+
+@media (max-width: 900px) {
+  .locs-grid { grid-template-columns: 1fr }
+}

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pol&iacute;tica de Privacidad y Protecci&oacute;n de Datos &mdash; SIIFWEB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <style>
+    .legal-hero {
+      background: var(--blue);
+      padding: calc(64px + clamp(3rem, 8vw, 5rem)) var(--page-pad) clamp(3rem, 6vw, 4.5rem);
+    }
+    .legal-hero-inner { max-width: var(--site-max); margin: 0 auto }
+    .legal-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-top: 1rem;
+      line-height: 1.15;
+    }
+    .legal-hero-meta {
+      margin-top: 1rem;
+      font-size: .88rem;
+      color: rgba(255,255,255,.65);
+    }
+    .legal-hero-meta strong { color: rgba(255,255,255,.9) }
+
+    .legal-body {
+      padding: clamp(3rem, 8vw, 5rem) var(--page-pad);
+      background: var(--white);
+    }
+    .legal-layout {
+      max-width: var(--site-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .legal-toc {
+      position: sticky;
+      top: 80px;
+    }
+    .legal-toc-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-bottom: .85rem;
+    }
+    .legal-toc ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+    }
+    .legal-toc ol li { margin-bottom: .45rem }
+    .legal-toc ol a {
+      font-size: .8rem;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color .2s;
+      line-height: 1.45;
+      display: block;
+    }
+    .legal-toc ol a:hover { color: var(--blue) }
+
+    .legal-content h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 2.5rem 0 .85rem;
+      padding-top: .5rem;
+      border-top: 1px solid var(--line);
+    }
+    .legal-content h2:first-child { margin-top: 0; border-top: none; padding-top: 0 }
+    .legal-content h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 1.75rem 0 .6rem;
+    }
+    .legal-content p {
+      font-size: .95rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .legal-content ul, .legal-content ol {
+      font-size: .95rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .legal-content ul li, .legal-content ol li { margin-bottom: .35rem }
+    .legal-content strong { color: var(--ink); font-weight: 600 }
+    .legal-content a { color: var(--blue); text-decoration: underline }
+    .legal-content a:hover { color: var(--blue-deep) }
+
+    .legal-card {
+      background: var(--blue-soft);
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      border-left: 3px solid var(--blue);
+      margin: 1.5rem 0;
+    }
+    .legal-card p { margin: 0; color: var(--ink-mid) }
+    .legal-card strong { color: var(--ink) }
+
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: .88rem;
+    }
+    .cookie-table th {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding: .65rem .85rem;
+      background: var(--white-2);
+      border: 1px solid var(--line);
+      text-align: left;
+    }
+    .cookie-table td {
+      padding: .65rem .85rem;
+      border: 1px solid var(--line);
+      color: var(--ink-mid);
+      vertical-align: top;
+    }
+    .cookie-badge {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .15rem .5rem;
+      border-radius: 20px;
+    }
+    .cookie-badge--req { background: rgba(18,100,168,.12); color: var(--blue) }
+    .cookie-badge--opt { background: rgba(122,155,180,.15); color: var(--ink-mid) }
+
+    @media (max-width: 860px) {
+      .legal-layout { grid-template-columns: 1fr }
+      .legal-toc { display: none }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="./">
+      <img src="assets/logo-navbar.webp" srcset="assets/logo-navbar.webp 1x, assets/logo-navbar@2x.webp 2x" alt="SIIFWEB" width="163" height="40">
+    </a>
+    <ul class="nav-links">
+      <li><a href="./modulos.html">M&oacute;dulos</a></li>
+      <li><a href="./nosotros.html">Nosotros</a></li>
+      <li><a href="./#contacto">Contacto</a></li>
+      <li class="nav-links-sep" aria-hidden="true"></li>
+      <li class="nav-mob-access"><a href="https://soporte.solinfo.com.co" target="_blank" rel="noreferrer">Soporte</a></li>
+      <li class="nav-mob-access"><a href="https://www.colombiagestiona.com/entidades.html" target="_blank" rel="noreferrer">Acceso aplicativo</a></li>
+      <li class="nav-mob-access nav-mob-disabled"><span>Acceso interno <span class="access-soon">Pr&oacute;ximamente</span></span></li>
+      <li class="nav-mob-access nav-mob-disabled"><span>PQRS <span class="access-soon">Pr&oacute;ximamente</span></span></li>
+    </ul>
+    <div class="nav-access-wrap">
+      <button class="nav-access" type="button" aria-haspopup="true" aria-expanded="false">
+        Acceder
+        <svg class="nav-access-chev" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="access-menu" role="menu">
+        <div class="access-menu-header">Acceso</div>
+        <a href="https://soporte.solinfo.com.co" class="access-item" target="_blank" rel="noreferrer" role="menuitem">
+          <span class="access-item-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" stroke="#1264A8" stroke-width="1.8"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="#1264A8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17" r=".5" fill="#1264A8" stroke="#1264A8"/></svg></span>
+          <span class="access-item-body"><span class="access-item-name">Soporte</span><span class="access-item-desc">Mesa de ayuda Solinfo</span></span>
+          <svg class="access-item-ext" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5l7-7M9.5 2.5H4M9.5 2.5v5.5" stroke="#7A9BB4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://www.colombiagestiona.com/entidades.html" class="access-item" target="_blank" rel="noreferrer" role="menuitem">
+          <span class="access-item-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#1264A8" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#1264A8" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="#1264A8" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="#1264A8" stroke-width="1.8"/></svg></span>
+          <span class="access-item-body"><span class="access-item-name">Acceso aplicativo</span><span class="access-item-desc">Colombia Gestiona</span></span>
+          <svg class="access-item-ext" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5l7-7M9.5 2.5H4M9.5 2.5v5.5" stroke="#7A9BB4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="access-item access-item--disabled" role="menuitem" aria-disabled="true">
+          <span class="access-item-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 4.8L20 8l-4 3.9.95 5.5L12 15l-4.95 2.4.95-5.5L4 8l5.6-1.2L12 2Z" stroke="#7A9BB4" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <span class="access-item-body"><span class="access-item-name">Acceso interno <span class="access-soon">Pr&oacute;ximamente</span></span><span class="access-item-desc">Plataforma de IA Solinfo</span></span>
+          <svg class="access-item-lock" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1.5" y="5.5" width="9" height="6" rx="1" stroke="#7A9BB4" stroke-width="1.3"/><path d="M3.5 5.5V3.5a2.5 2.5 0 0 1 5 0v2" stroke="#7A9BB4" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="access-item access-item--disabled" role="menuitem" aria-disabled="true">
+          <span class="access-item-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="#7A9BB4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="#7A9BB4" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span class="access-item-body"><span class="access-item-name">PQRS <span class="access-soon">Pr&oacute;ximamente</span></span><span class="access-item-desc">Peticiones, quejas y recursos</span></span>
+          <svg class="access-item-lock" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1.5" y="5.5" width="9" height="6" rx="1" stroke="#7A9BB4" stroke-width="1.3"/><path d="M3.5 5.5V3.5a2.5 2.5 0 0 1 5 0v2" stroke="#7A9BB4" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Abrir men&uacute;" aria-controls="nav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="legal-hero">
+  <div class="legal-hero-inner">
+    <span class="tag tag-light">Transparencia y privacidad</span>
+    <h1>Pol&iacute;tica de Privacidad<br>y Protecci&oacute;n de Datos Personales</h1>
+    <p class="legal-hero-meta">
+      <strong>Responsable:</strong> Soluciones de Informaci&oacute;n S.A.S. &nbsp;&middot;&nbsp;
+      <strong>NIT:</strong> 900.293.512-0 &nbsp;&middot;&nbsp;
+      <strong>&Uacute;ltima actualizaci&oacute;n:</strong> Enero de 2025
+    </p>
+  </div>
+</div>
+
+<!-- Contenido -->
+<section class="legal-body">
+  <div class="legal-layout">
+
+    <!-- Tabla de contenido (sticky) -->
+    <aside class="legal-toc">
+      <div class="legal-toc-title">Contenido</div>
+      <ol>
+        <li><a href="#responsable">1. Responsable del tratamiento</a></li>
+        <li><a href="#marco">2. Marco normativo</a></li>
+        <li><a href="#datos">3. Datos que recopilamos</a></li>
+        <li><a href="#finalidades">4. Finalidades del tratamiento</a></li>
+        <li><a href="#transferencias">5. Transferencias y transmisiones</a></li>
+        <li><a href="#derechos">6. Derechos de los titulares</a></li>
+        <li><a href="#cookies">7. Pol&iacute;tica de cookies</a></li>
+        <li><a href="#seguridad">8. Medidas de seguridad</a></li>
+        <li><a href="#menores">9. Datos de menores de edad</a></li>
+        <li><a href="#vigencia">10. Vigencia y modificaciones</a></li>
+        <li><a href="#contacto">11. Canal de atenci&oacute;n</a></li>
+      </ol>
+    </aside>
+
+    <!-- Texto legal -->
+    <div class="legal-content">
+
+      <h2 id="responsable">1. Identificaci&oacute;n del Responsable del Tratamiento</h2>
+      <div class="legal-card">
+        <p>
+          <strong>Raz&oacute;n social:</strong> Soluciones de Informaci&oacute;n S.A.S.<br>
+          <strong>NIT:</strong> 900.293.512-0<br>
+          <strong>Domicilio principal:</strong> Carrera 15 No. 138-25, Oficina 304, Edificio CNC &mdash; Centro Log&iacute;stico del Eje Cafetero, Pereira, Risaralda, Colombia.<br>
+          <strong>Sitio web:</strong> <a href="https://siifweb.com">siifweb.com</a><br>
+          <strong>Correo de privacidad:</strong> <a href="mailto:privacidad@solinfo.com.co">privacidad@solinfo.com.co</a><br>
+          <strong>Tel&eacute;fono:</strong> +57 312 771 1519
+        </p>
+      </div>
+      <p>Soluciones de Informaci&oacute;n S.A.S. (&ldquo;Solinfo&rdquo; o &ldquo;la Empresa&rdquo;) es la sociedad desarrolladora y operadora de la Plataforma de Gesti&oacute;n Estatal <strong>SIIFWEB</strong>. En su calidad de responsable del tratamiento, determina los fines y medios para el procesamiento de los datos personales que recopila a trav&eacute;s de su sitio web y plataformas digitales.</p>
+
+      <h2 id="marco">2. Marco Normativo</h2>
+      <p>La presente pol&iacute;tica se rige por las siguientes disposiciones legales colombianas e internacionales aplicables:</p>
+      <ul>
+        <li><strong>Ley Estatutaria 1581 de 2012</strong> &mdash; Disposiciones generales para la protecci&oacute;n de datos personales en Colombia.</li>
+        <li><strong>Decreto 1377 de 2013</strong> (incorporado al Decreto &Uacute;nico Reglamentario 1074 de 2015) &mdash; Reglamentaci&oacute;n de la Ley 1581 de 2012.</li>
+        <li><strong>Ley 1266 de 2008</strong> &mdash; Disposiciones sobre h&aacute;beas data y datos financieros.</li>
+        <li><strong>Circular &Uacute;nica de la Superintendencia de Industria y Comercio (SIC)</strong> &mdash; Instrucciones sobre protecci&oacute;n de datos personales.</li>
+        <li><strong>Ley 2300 de 2023</strong> &mdash; Sobre mensajes de datos no solicitados.</li>
+        <li>Marcos internacionales de referencia: GDPR (UE) 2016/679, como est&aacute;ndar de buenas pr&aacute;cticas.</li>
+      </ul>
+      <p>Los principios que rigen el tratamiento de datos en Solinfo son: <strong>legalidad, finalidad, libertad, veracidad o calidad, transparencia, acceso y circulaci&oacute;n restringida, seguridad y confidencialidad</strong>, de conformidad con el art&iacute;culo 4 de la Ley 1581 de 2012.</p>
+
+      <h2 id="datos">3. Datos Personales que Recopilamos</h2>
+      <p>Dependiendo de su interacci&oacute;n con nuestra plataforma, podemos recopilar las siguientes categor&iacute;as de datos:</p>
+
+      <h3>3.1 Datos proporcionados directamente</h3>
+      <ul>
+        <li><strong>Datos de contacto:</strong> Nombre completo, cargo, nombre de la entidad p&uacute;blica o empresa, correo electr&oacute;nico institucional, n&uacute;mero de tel&eacute;fono o celular.</li>
+        <li><strong>Datos de solicitud:</strong> Mensaje o descripci&oacute;n de necesidades enviado a trav&eacute;s del formulario de contacto.</li>
+        <li><strong>Datos de comunicaci&oacute;n:</strong> Registro de conversaciones iniciadas a trav&eacute;s del asistente virtual, WhatsApp o correo electr&oacute;nico.</li>
+      </ul>
+
+      <h3>3.2 Datos recopilados autom&aacute;ticamente</h3>
+      <ul>
+        <li><strong>Datos de navegaci&oacute;n:</strong> Direcci&oacute;n IP (anonimizada), tipo de navegador, sistema operativo, p&aacute;ginas visitadas, tiempo de sesi&oacute;n, URL de referencia.</li>
+        <li><strong>Datos de dispositivo:</strong> Identificadores de dispositivo, resoluci&oacute;n de pantalla, idioma del sistema.</li>
+        <li><strong>Cookies y tecnolog&iacute;as similares:</strong> Seg&uacute;n lo descrito en la secci&oacute;n 7 de esta pol&iacute;tica.</li>
+      </ul>
+
+      <h3>3.3 Datos que NO recopilamos</h3>
+      <p>Solinfo <strong>no recopila</strong> datos sensibles en los t&eacute;rminos del art&iacute;culo 5 de la Ley 1581 de 2012 (origen racial, convicciones religiosas, datos de salud, orientaci&oacute;n sexual, datos biom&eacute;tricos, entre otros), ni datos de menores de edad de manera directa a trav&eacute;s de su sitio web p&uacute;blico.</p>
+
+      <h2 id="finalidades">4. Finalidades del Tratamiento</h2>
+      <p>Sus datos personales ser&aacute;n tratados &uacute;nicamente para las siguientes finalidades:</p>
+      <ol>
+        <li><strong>Atenci&oacute;n de solicitudes:</strong> Responder consultas, solicitudes de demostraci&oacute;n, cotizaciones o cualquier requerimiento enviado a trav&eacute;s del sitio web o canales de contacto.</li>
+        <li><strong>Gesti&oacute;n comercial:</strong> Coordinar reuniones, presentaciones y procesos de vinculaci&oacute;n de nuevos clientes, incluyendo el seguimiento de oportunidades comerciales.</li>
+        <li><strong>Comunicaciones informativas:</strong> Enviar informaci&oacute;n sobre actualizaciones de la plataforma SIIFWEB, cambios normativos relevantes para el sector p&uacute;blico o invitaciones a eventos, <em>siempre que el titular haya otorgado su consentimiento expreso</em>.</li>
+        <li><strong>Soporte t&eacute;cnico y operativo:</strong> Prestar asistencia t&eacute;cnica a clientes activos de SIIFWEB, gestionar incidentes y coordinar actualizaciones.</li>
+        <li><strong>Mejora del servicio:</strong> Analizar el uso del sitio web de forma agregada y an&oacute;nima para mejorar la experiencia de navegaci&oacute;n y el rendimiento de la plataforma.</li>
+        <li><strong>Cumplimiento legal:</strong> Dar cumplimiento a obligaciones legales, regulatorias o contractuales exigibles a Soluciones de Informaci&oacute;n S.A.S.</li>
+      </ol>
+      <p>Sus datos <strong>no ser&aacute;n vendidos, cedidos ni transferidos</strong> a terceros con fines comerciales ajenos a las finalidades descritas anteriormente.</p>
+
+      <h2 id="transferencias">5. Transferencia y Transmisi&oacute;n de Datos</h2>
+      <p>En el marco de la prestaci&oacute;n del servicio, sus datos pueden ser tratados por los siguientes encargados del tratamiento, bajo las garant&iacute;as contractuales exigidas por la Ley 1581 de 2012:</p>
+      <ul>
+        <li><strong>Amazon Web Services (AWS):</strong> Proveedor de infraestructura en la nube. Los datos pueden procesarse en servidores ubicados en regi&oacute;n us-east-1 (Norte de Virginia, EE.UU.) con est&aacute;ndares de seguridad certificados (ISO 27001, SOC 2).</li>
+        <li><strong>Oracle Cloud Infrastructure (OCI):</strong> Proveedor de base de datos y servicios de c&oacute;mputo en la nube, con certificaciones internacionales de seguridad.</li>
+        <li><strong>Proveedores de comunicaciones:</strong> Herramientas de correo electr&oacute;nico corporativo y mensajer&iacute;a utilizados para la atenci&oacute;n al cliente.</li>
+      </ul>
+      <p>Toda transferencia internacional de datos se realiza bajo las garant&iacute;as del art&iacute;culo 26 de la Ley 1581 de 2012 y los contratos de encargo de tratamiento suscritos con cada proveedor. Solinfo no realiza transferencias internacionales fuera de este marco.</p>
+
+      <h2 id="derechos">6. Derechos de los Titulares</h2>
+      <p>De conformidad con el art&iacute;culo 8 de la Ley 1581 de 2012, usted tiene los siguientes derechos como titular de datos personales:</p>
+      <ul>
+        <li><strong>Acceso:</strong> Conocer qu&eacute; datos personales suyos est&aacute;n siendo tratados por Solinfo.</li>
+        <li><strong>Rectificaci&oacute;n:</strong> Solicitar la actualizaci&oacute;n o correcci&oacute;n de datos inexactos, incompletos o que induzcan a error.</li>
+        <li><strong>Supresi&oacute;n:</strong> Solicitar la eliminaci&oacute;n de sus datos cuando no exista una obligaci&oacute;n legal o contractual que exija su conservaci&oacute;n.</li>
+        <li><strong>Revocaci&oacute;n de la autorizaci&oacute;n:</strong> Retirar el consentimiento otorgado para el tratamiento, sin efecto retroactivo.</li>
+        <li><strong>Prueba de autorizaci&oacute;n:</strong> Solicitar la acreditaci&oacute;n del consentimiento dado para el tratamiento de sus datos.</li>
+        <li><strong>Queja ante la SIC:</strong> Presentar reclamaciones ante la Superintendencia de Industria y Comercio cuando considere que sus derechos han sido vulnerados.</li>
+        <li><strong>Oposici&oacute;n:</strong> Oponerse al tratamiento de sus datos para finalidades espec&iacute;ficas, en especial las de car&aacute;cter comercial o de mercadeo.</li>
+      </ul>
+
+      <h3>6.1 C&oacute;mo ejercer sus derechos</h3>
+      <p>Para ejercer cualquiera de estos derechos, env&iacute;e su solicitud al canal habilitado:</p>
+      <div class="legal-card">
+        <p>
+          <strong>Correo electr&oacute;nico:</strong> <a href="mailto:privacidad@solinfo.com.co">privacidad@solinfo.com.co</a><br>
+          <strong>Asunto sugerido:</strong> &ldquo;PQRS Protecci&oacute;n de Datos &mdash; [Su nombre]&rdquo;<br>
+          <strong>Tiempo de respuesta:</strong> M&aacute;ximo <strong>15 d&iacute;as h&aacute;biles</strong> para consultas y <strong>15 d&iacute;as h&aacute;biles</strong> para reclamos, prorrogables por 8 d&iacute;as h&aacute;biles adicionales con notificaci&oacute;n previa (art. 14 y 15, Ley 1581 de 2012).
+        </p>
+      </div>
+      <p>Si su solicitud no es resuelta satisfactoriamente, puede elevar su reclamaci&oacute;n ante la <strong>Superintendencia de Industria y Comercio (SIC)</strong> a trav&eacute;s de <a href="https://www.sic.gov.co" target="_blank" rel="noreferrer">www.sic.gov.co</a>.</p>
+
+      <h2 id="cookies">7. Pol&iacute;tica de Cookies</h2>
+      <p>Las cookies son peque&ntilde;os archivos de texto que los sitios web almacenan en su dispositivo para recordar preferencias y mejorar la experiencia de navegaci&oacute;n. A continuaci&oacute;n describimos las cookies utilizadas en <strong>siifweb.com</strong>:</p>
+
+      <table class="cookie-table">
+        <thead>
+          <tr>
+            <th>Categor&iacute;a</th>
+            <th>Nombre / Identificador</th>
+            <th>Finalidad</th>
+            <th>Duraci&oacute;n</th>
+            <th>Consentimiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Esenciales</strong></td>
+            <td><code>siif_cookie_consent</code></td>
+            <td>Registra la preferencia de cookies del usuario para no mostrar el banner repetidamente.</td>
+            <td>365 d&iacute;as</td>
+            <td><span class="cookie-badge cookie-badge--req">Requerida</span></td>
+          </tr>
+          <tr>
+            <td><strong>Funcionales</strong></td>
+            <td><code>siif_chat_state</code></td>
+            <td>Recuerda si el asistente virtual fue abierto en la sesi&oacute;n actual.</td>
+            <td>Sesi&oacute;n</td>
+            <td><span class="cookie-badge cookie-badge--opt">Opcional</span></td>
+          </tr>
+          <tr>
+            <td><strong>Anal&iacute;ticas</strong></td>
+            <td>&mdash;</td>
+            <td>Actualmente no se usan herramientas de an&aacute;lisis con cookies de seguimiento. En caso de implementarse, se actualizar&aacute; esta pol&iacute;tica y se requerir&aacute; consentimiento previo.</td>
+            <td>&mdash;</td>
+            <td><span class="cookie-badge cookie-badge--opt">N/A</span></td>
+          </tr>
+          <tr>
+            <td><strong>Publicidad</strong></td>
+            <td>&mdash;</td>
+            <td>Solinfo <strong>no utiliza</strong> cookies de publicidad ni de seguimiento de terceros con fines publicitarios.</td>
+            <td>&mdash;</td>
+            <td><span class="cookie-badge cookie-badge--opt">N/A</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>7.1 C&oacute;mo gestionar las cookies</h3>
+      <p>Puede gestionar sus preferencias de cookies a trav&eacute;s del banner de consentimiento que aparece en su primera visita al sitio, o mediante la configuraci&oacute;n de su navegador. Tenga en cuenta que deshabilitar cookies esenciales puede afectar el funcionamiento del sitio.</p>
+      <p>Para m&aacute;s informaci&oacute;n sobre c&oacute;mo gestionar cookies en su navegador:</p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noreferrer">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/kb/enable-and-disable-cookies-website-preferences" target="_blank" rel="noreferrer">Mozilla Firefox</a></li>
+        <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471" target="_blank" rel="noreferrer">Apple Safari</a></li>
+        <li><a href="https://support.microsoft.com/topic/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noreferrer">Microsoft Edge</a></li>
+      </ul>
+
+      <h2 id="seguridad">8. Medidas de Seguridad</h2>
+      <p>Soluciones de Informaci&oacute;n S.A.S. implementa medidas t&eacute;cnicas, administrativas y organizativas para proteger los datos personales contra acceso no autorizado, p&eacute;rdida, destrucci&oacute;n o alteraci&oacute;n. Entre estas medidas se encuentran:</p>
+      <ul>
+        <li>Cifrado de comunicaciones mediante <strong>TLS 1.3</strong> (HTTPS) en todos los canales web.</li>
+        <li>Control de acceso basado en roles con principio de m&iacute;nimo privilegio.</li>
+        <li>Copias de seguridad autom&aacute;ticas con cifrado en reposo.</li>
+        <li>Auditor&iacute;as peri&oacute;dicas de seguridad y pruebas de penetraci&oacute;n.</li>
+        <li>Capacitaci&oacute;n continua del equipo en protecci&oacute;n de datos y ciberseguridad.</li>
+        <li>Operaci&oacute;n bajo el est&aacute;ndar <strong>ISO/IEC 27001</strong> de gesti&oacute;n de seguridad de la informaci&oacute;n.</li>
+        <li>Plan de respuesta a incidentes de seguridad con notificaci&oacute;n a titulares y a la SIC cuando sea legalmente requerido.</li>
+      </ul>
+      <p>Aunque implementamos est&aacute;ndares de seguridad robustos, ning&uacute;n sistema es completamente infalible. En caso de incidente de seguridad que afecte sus datos, ser&aacute; notificado de conformidad con la normativa aplicable.</p>
+
+      <h2 id="menores">9. Datos de Menores de Edad</h2>
+      <p>El sitio web de SIIFWEB est&aacute; dirigido exclusivamente a funcionarios p&uacute;blicos, representantes de entidades del Estado y profesionales del sector tecnol&oacute;gico. Solinfo <strong>no recopila conscientemente datos de menores de edad</strong> (personas menores de 18 a&ntilde;os) a trav&eacute;s de su sitio web p&uacute;blico.</p>
+      <p>Si tiene conocimiento de que un menor de edad ha proporcionado datos a trav&eacute;s de nuestros formularios, le solicitamos notificarnos de inmediato a <a href="mailto:privacidad@solinfo.com.co">privacidad@solinfo.com.co</a> para proceder con su eliminaci&oacute;n.</p>
+
+      <h2 id="vigencia">10. Vigencia y Modificaciones</h2>
+      <p>La presente Pol&iacute;tica de Privacidad entra en vigencia a partir de <strong>enero de 2025</strong> y permanecer&aacute; vigente hasta que sea reemplazada por una nueva versi&oacute;n.</p>
+      <p>Soluciones de Informaci&oacute;n S.A.S. se reserva el derecho de modificar esta pol&iacute;tica en cualquier momento, en respuesta a cambios normativos, actualizaciones de servicio o mejoras en sus pr&aacute;cticas de privacidad. Toda modificaci&oacute;n ser&aacute;:</p>
+      <ul>
+        <li>Publicada en esta misma p&aacute;gina con la fecha de actualizaci&oacute;n.</li>
+        <li>Notificada a los titulares que hayan proporcionado correo electr&oacute;nico, cuando los cambios sean sustanciales.</li>
+        <li>Sometida a nueva solicitud de consentimiento cuando los cambios afecten las finalidades del tratamiento.</li>
+      </ul>
+
+      <h2 id="contacto">11. Canal de Atenci&oacute;n de Datos Personales</h2>
+      <p>Para ejercer sus derechos, formular preguntas o reclamos relacionados con el tratamiento de sus datos personales, puede comunicarse con el &aacute;rea responsable de protecci&oacute;n de datos de Soluciones de Informaci&oacute;n S.A.S.:</p>
+      <div class="legal-card">
+        <p>
+          <strong>Correo electr&oacute;nico:</strong> <a href="mailto:privacidad@solinfo.com.co">privacidad@solinfo.com.co</a><br>
+          <strong>Tel&eacute;fono:</strong> +57 312 771 1519<br>
+          <strong>Direcci&oacute;n f&iacute;sica:</strong> Carrera 15 No. 138-25, Oficina 304, Edificio CNC, Pereira, Risaralda.<br>
+          <strong>Horario de atenci&oacute;n:</strong> Lunes a viernes, 8:00 a.m. &ndash; 6:00 p.m. (hora Colombia).<br>
+          <strong>Tiempo de respuesta:</strong> M&aacute;ximo 15 d&iacute;as h&aacute;biles.
+        </p>
+      </div>
+      <p>Si considera que sus derechos no han sido atendidos satisfactoriamente, puede presentar una queja ante la <strong>Superintendencia de Industria y Comercio</strong>:</p>
+      <ul>
+        <li>Sitio web: <a href="https://www.sic.gov.co" target="_blank" rel="noreferrer">www.sic.gov.co</a></li>
+        <li>L&iacute;nea gratuita: 01-8000-910-165</li>
+        <li>Direcci&oacute;n: Carrera 13 No. 27-00, Bogot&aacute; D.C.</li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<div class="footer-curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,80 L1440,80 L1440,34 Q1360,10 1240,16 L0,42 Z" fill="#0B1622"/></svg></div>
+<footer>
+  <div class="footer-in">
+    <div class="fl">
+      <img src="assets/siifweb-icon.webp" alt="SIIFWEB" width="32" height="32" class="footer-icon">
+      SIIF<span>WEB</span>
+    </div>
+    <ul class="fn">
+      <li><a href="./">Inicio</a></li>
+      <li><a href="./modulos.html">M&oacute;dulos</a></li>
+      <li><a href="./nosotros.html">Nosotros</a></li>
+      <li><a href="./#contacto">Contacto</a></li>
+      <li><a href="https://soporte.solinfo.com.co" target="_blank" rel="noreferrer">Soporte</a></li>
+      <li><a href="./politica-privacidad.html">Pol&iacute;tica de datos</a></li>
+      <li><a href="https://www.colombiagestiona.com/entidades.html" target="_blank">Acceder</a></li>
+    </ul>
+    <div class="fc">
+      <img src="assets/soluciones-info.webp" alt="Soluciones de Informaci&oacute;n" height="28" class="footer-company-logo">
+      <span>&copy; 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/index.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>
