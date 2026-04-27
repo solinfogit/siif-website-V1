@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(grep -E \"\\\\.\\(html|json|js\\)$\")",
+      "mcp__Claude_Preview__preview_start",
+      "WebSearch",
+      "WebFetch(domain:siifweb.com)",
+      "WebFetch(domain:www.informacolombia.com)",
+      "WebFetch(domain:www.informacion-empresas.co)",
+      "WebFetch(domain:www.dnb.com)",
+      "WebFetch(domain:synchrox.com)",
+      "WebFetch(domain:www.emis.com)",
+      "WebFetch(domain:solinfo.com.co)",
+      "WebFetch(domain:empresite.eleconomistaamerica.co)"
+    ]
+  }
+}

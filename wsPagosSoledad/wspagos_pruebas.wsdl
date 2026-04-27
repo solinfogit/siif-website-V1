@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://wssiim/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WsPagosServiceService" targetNamespace="http://wssiim/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://wssiim/" elementFormDefault="unqualified" targetNamespace="http://wssiim/" version="1.0">
+
+  <xs:element name="iInfoFactura" type="tns:iInfoFactura"/>
+
+  <xs:element name="iInfoFacturaExtendida" type="tns:iInfoFacturaExtendida"/>
+
+  <xs:element name="iInfoFacturaExtendidaResponse" type="tns:iInfoFacturaExtendidaResponse"/>
+
+  <xs:element name="iInfoFacturaResponse" type="tns:iInfoFacturaResponse"/>
+
+  <xs:element name="iPagoImpuesto" type="tns:iPagoImpuesto"/>
+
+  <xs:element name="iPagoImpuestoResponse" type="tns:iPagoImpuestoResponse"/>
+
+  <xs:element name="iValidaFactura" type="tns:iValidaFactura"/>
+
+  <xs:element name="iValidaFacturaResponse" type="tns:iValidaFacturaResponse"/>
+
+  <xs:complexType name="iInfoFactura">
+    <xs:sequence>
+      <xs:element name="hashCode" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+      <xs:element name="nitCompania" type="xs:string"/>
+      <xs:element name="numeroFactura" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iInfoFacturaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="result" type="tns:facturas"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="facturas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="nitCompania" type="xs:string"/>
+      <xs:element minOccurs="0" name="factura" type="xs:string"/>
+      <xs:element minOccurs="0" name="valorMinimo" type="xs:long"/>
+      <xs:element minOccurs="0" name="valorTotal" type="xs:long"/>
+      <xs:element minOccurs="0" name="fechaLimite" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iInfoFacturaExtendida">
+    <xs:sequence>
+      <xs:element name="hashCode" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+      <xs:element name="nitCompania" type="xs:string"/>
+      <xs:element name="numeroFactura" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iInfoFacturaExtendidaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="result" type="tns:facturasExtendida"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="facturasExtendida">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="nitCompania" type="xs:string"/>
+      <xs:element minOccurs="0" name="factura" type="xs:string"/>
+      <xs:element minOccurs="0" name="valorMinimo" type="xs:long"/>
+      <xs:element minOccurs="0" name="valorTotal" type="xs:long"/>
+      <xs:element minOccurs="0" name="fechaLimite" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoServicio" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iValidaFactura">
+    <xs:sequence>
+      <xs:element name="hashCode" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+      <xs:element name="nitCompania" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaLimite" nillable="true" type="xs:string"/>
+      <xs:element name="numeroFactura" type="xs:string"/>
+      <xs:element name="valorFactura" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iValidaFacturaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="result" type="tns:response"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="status" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iPagoImpuesto">
+    <xs:sequence>
+      <xs:element name="hashCode" type="xs:string"/>
+      <xs:element name="user" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+      <xs:element name="nitCompania" type="xs:string"/>
+      <xs:element minOccurs="0" name="reqId" type="xs:string"/>
+      <xs:element name="fechaPago" type="xs:string"/>
+      <xs:element name="numeroFactura" type="xs:string"/>
+      <xs:element name="valorPagado" type="xs:long"/>
+      <xs:element name="banco" type="xs:int"/>
+      <xs:element name="numeroCuenta" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoServicio" type="xs:string"/>
+      <xs:element name="medioPago" type="xs:int"/>
+      <xs:element minOccurs="0" name="jornada" type="xs:int"/>
+      <xs:element minOccurs="0" name="fechaContable" type="xs:string"/>
+      <xs:element minOccurs="0" name="intentoPago" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="iPagoImpuestoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:response"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="iInfoFactura">
+    <wsdl:part element="tns:iInfoFactura" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="iValidaFactura">
+    <wsdl:part element="tns:iValidaFactura" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="iValidaFacturaResponse">
+    <wsdl:part element="tns:iValidaFacturaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="iPagoImpuestoResponse">
+    <wsdl:part element="tns:iPagoImpuestoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="iPagoImpuesto">
+    <wsdl:part element="tns:iPagoImpuesto" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="iInfoFacturaExtendida">
+    <wsdl:part element="tns:iInfoFacturaExtendida" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="iInfoFacturaResponse">
+    <wsdl:part element="tns:iInfoFacturaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="iInfoFacturaExtendidaResponse">
+    <wsdl:part element="tns:iInfoFacturaExtendidaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WsPagosService">
+    <wsdl:operation name="iInfoFactura">
+      <wsdl:input message="tns:iInfoFactura" name="iInfoFactura">
+    </wsdl:input>
+      <wsdl:output message="tns:iInfoFacturaResponse" name="iInfoFacturaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iInfoFacturaExtendida">
+      <wsdl:input message="tns:iInfoFacturaExtendida" name="iInfoFacturaExtendida">
+    </wsdl:input>
+      <wsdl:output message="tns:iInfoFacturaExtendidaResponse" name="iInfoFacturaExtendidaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iValidaFactura">
+      <wsdl:input message="tns:iValidaFactura" name="iValidaFactura">
+    </wsdl:input>
+      <wsdl:output message="tns:iValidaFacturaResponse" name="iValidaFacturaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iPagoImpuesto">
+      <wsdl:input message="tns:iPagoImpuesto" name="iPagoImpuesto">
+    </wsdl:input>
+      <wsdl:output message="tns:iPagoImpuestoResponse" name="iPagoImpuestoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsPagosServiceServiceSoapBinding" type="tns:WsPagosService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="iInfoFactura">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="iInfoFactura">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="iInfoFacturaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iInfoFacturaExtendida">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="iInfoFacturaExtendida">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="iInfoFacturaExtendidaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iValidaFactura">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="iValidaFactura">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="iValidaFacturaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iPagoImpuesto">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="iPagoImpuesto">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="iPagoImpuestoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsPagosServiceService">
+    <wsdl:port binding="tns:WsPagosServiceServiceSoapBinding" name="WsPagosServicePort">
+      <soap:address location="https://pruebas.siifweb.com:8071/services/wspagos"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
