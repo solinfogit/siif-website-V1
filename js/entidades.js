@@ -24,21 +24,21 @@ const ENTIDADES = [
     nombre: "UCEVA",
     departamento: "Valle del Cauca",
     municipio: "Tuluá",
-    url: "", // TODO: pegar URL de acceso de la plataforma actualizada
+    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
     estado: "activo"
   },
   {
     nombre: "Soluciones de Información",
     departamento: "Risaralda",
     municipio: "Pereira",
-    url: "", // TODO: pegar URL de acceso de la plataforma actualizada
+    url: "https://apx-solinfo.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=900293512",
     estado: "activo"
   },
   {
     nombre: "Alcaldía de Santa Marta",
     departamento: "Magdalena",
     municipio: "Santa Marta",
-    url: "", // TODO: pegar URL de acceso de la plataforma actualizada
+    url: "https://apx-santamarta.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891780009",
     estado: "activo"
   }
 ];
