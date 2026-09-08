@@ -28,7 +28,7 @@ const ENTIDADES = [
     estado: "activo"
   },
   {
-    nombre: "Solinfo",
+    nombre: "Soluciones de Información",
     departamento: "Risaralda",
     municipio: "Pereira",
     url: "", // TODO: pegar URL de acceso de la plataforma actualizada
