@@ -238,6 +238,15 @@
   background: var(--white-2);
   cursor: not-allowed;
 }
+.acc-enter--alt {
+  color: var(--ink-mid);
+  border-color: var(--line);
+}
+.acc-enter--alt:hover {
+  background: var(--ink-mid);
+  border-color: var(--ink-mid);
+  color: var(--white);
+}
 
 /* ── Sin resultados ── */
 .acc-empty {

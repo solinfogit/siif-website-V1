@@ -8,7 +8,8 @@
      nombre:       "Alcaldía de ____",           // nombre público de la entidad
      departamento: "____",                        // departamento (agrupa el directorio)
      municipio:    "____",                        // municipio o sede
-     url:          "https://____",                // URL de acceso a su plataforma
+     url:          "https://____",                // URL de acceso a su plataforma (SIIFWEB)
+     urlProcesos:  "https://____",                // URL de procesos (Synchrox) — opcional
      estado:       "activo"                       // activo | proximamente
    }
 
@@ -25,6 +26,7 @@ const ENTIDADES = [
     departamento: "Valle del Cauca",
     municipio: "Tuluá",
     url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
+    urlProcesos: "https://servicio.siifweb.com/",
     estado: "activo"
   },
   {
@@ -32,6 +34,7 @@ const ENTIDADES = [
     departamento: "Risaralda",
     municipio: "Pereira",
     url: "https://apx-solinfo.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=900293512",
+    urlProcesos: "https://solinfo.synchrox.com/",
     estado: "activo"
   },
   {
@@ -39,6 +42,7 @@ const ENTIDADES = [
     departamento: "Magdalena",
     municipio: "Santa Marta",
     url: "https://apx-santamarta.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891780009",
+    urlProcesos: "https://santamarta.siifweb.com/",
     estado: "activo"
   }
 ];
