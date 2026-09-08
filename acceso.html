@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIIFWEB - M&oacute;dulos</title>
+  <title>Acceso Nuevo &mdash; SIIFWEB</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/modulos.css">
+  <link rel="stylesheet" href="css/acceso.css">
   <link rel="stylesheet" href="css/chat.css">
 </head>
 <body>
+
 <nav id="nav">
   <div class="nav-inner">
     <a class="nav-logo" href="./">
@@ -70,22 +71,66 @@
   </div>
 </nav>
 
-<section class="hero">
-  <div class="hero-inner">
-    <span class="hero-tag">Cat&aacute;logo de m&oacute;dulos</span>
-    <h1>Explore la suite completa de SIIFWEB</h1>
-    <p>Plataforma modular integrada para garantizar trazabilidad, control y cumplimiento
-normativo en entidades territoriales.</p>
+<!-- Hero -->
+<header class="acc-hero">
+  <div class="acc-hero-inner">
+    <span class="tag tag-light">Plataforma actualizada</span>
+    <h1>Acceso Nuevo</h1>
+    <p class="acc-hero-sub">
+      Directorio de acceso para las entidades que ya operan en la <strong>nueva generaci&oacute;n de SIIFWEB</strong>.
+      Busque su entidad por nombre, municipio o departamento e ingrese directamente a su plataforma.
+    </p>
   </div>
-</section>
+</header>
 
-<main class="layout" id="catalogo">
-  <aside class="sidebar">
-    <div class="sidebar-label">Subsistemas</div>
-    <nav id="side-nav"></nav>
-  </aside>
+<!-- Directorio -->
+<main class="acc-main">
+  <div class="acc-main-inner">
 
-  <div class="content" id="sections"></div>
+    <!-- Buscador y filtros -->
+    <div class="acc-toolbar">
+      <div class="acc-toolbar-row">
+        <div class="acc-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#7A9BB4" stroke-width="2"/><path d="m20 20-3.8-3.8" stroke="#7A9BB4" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" id="acc-search" placeholder="Buscar entidad o municipio&hellip;" autocomplete="off" aria-label="Buscar entidad o municipio">
+        </div>
+        <div class="acc-select-wrap">
+          <select id="acc-dep" aria-label="Filtrar por departamento">
+            <option value="">Todos los departamentos</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjetas agrupadas por departamento (render din&aacute;mico) -->
+    <div id="acc-directory"></div>
+
+    <!-- Sin resultados -->
+    <div class="acc-empty" id="acc-empty">
+      <div class="acc-empty-ico">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#7A9BB4" stroke-width="1.8"/><path d="m20 20-3.8-3.8M8.5 11h5" stroke="#7A9BB4" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <h3>No encontramos resultados</h3>
+      <p>Revise la escritura o limpie los filtros. Si su entidad opera en la versi&oacute;n anterior, ingrese por Colombia Gestiona.</p>
+      <button type="button" id="acc-reset">Limpiar filtros</button>
+    </div>
+
+    <!-- Entidades en la versi&oacute;n anterior -->
+    <div class="acc-cta sr">
+      <div class="acc-cta-txt">
+        <h3>&iquest;Su entidad no aparece en el directorio?</h3>
+        <p>Las entidades que a&uacute;n operan la versi&oacute;n anterior de SIIFWEB conservan su acceso habitual a trav&eacute;s de Colombia Gestiona. Si tiene dudas sobre su acceso, nuestro equipo le ayuda.</p>
+      </div>
+      <div class="acc-cta-acts">
+        <a class="acc-cta-btn acc-cta-btn--solid" href="https://www.colombiagestiona.com/entidades.html" target="_blank" rel="noreferrer">
+          Ir a Colombia Gestiona
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5l7-7M9.5 2.5H4M9.5 2.5v5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="acc-cta-btn acc-cta-btn--ghost" href="https://soporte.solinfo.com.co" target="_blank" rel="noreferrer">Contactar soporte</a>
+      </div>
+    </div>
+
+  </div>
 </main>
 
 <div class="footer-curve"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,80 L1440,80 L1440,34 Q1360,10 1240,16 L0,42 Z" fill="#0B1622"/></svg></div>
@@ -112,20 +157,9 @@ normativo en entidades territoriales.</p>
   </div>
 </footer>
 
-<script src="js/modulos.js"></script>
-<script>
-  /* Active nav for modulos page */
-  (function () {
-    var p = window.location.pathname;
-    document.querySelectorAll('.nav-links > li > a').forEach(function (a) {
-      var href = a.getAttribute('href');
-      if (!href || href.startsWith('http')) return;
-      var clean = href.replace(/^\.\//, '').split('#')[0];
-      var cleanNoExt = clean.replace(/\.html$/, '');
-      if (clean && (p.endsWith('/' + clean) || p.endsWith('/' + cleanNoExt))) a.classList.add('active');
-    });
-  }());
-</script>
+<script src="js/entidades.js"></script>
+<script src="js/acceso.js"></script>
+<script src="js/index.js"></script>
 <script src="js/chat.js"></script>
 </body>
 </html>

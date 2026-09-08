@@ -201,6 +201,21 @@ a.access-item:hover .access-item-ext { opacity: .85 }
   line-height: 1;
   flex-shrink: 0;
 }
+.access-new {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .57rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: .18rem .48rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0E9F6E 0%, #1264A8 100%);
+  color: #fff;
+  line-height: 1;
+  flex-shrink: 0;
+}
 
 /* Mobile: hide desktop access items, show mobile ones hidden by default */
 .nav-links-sep, .nav-mob-access { display: none }
