@@ -47,8 +47,7 @@ siif-website-V1/
 └── assets/
     ├── favicon.ico
     ├── apple-touch-icon.png
-    ├── logo-navbar.webp        # Logo del navbar (resolución normal)
-    ├── logo-navbar@2x.webp     # Logo del navbar (pantallas Retina / HiDPI)
+    ├── logo-navbar.svg         # Logo del navbar (vectorial, azul)
     ├── siifweb-icon.webp       # Icono de marca usado en el footer
     └── soluciones-info.webp    # Logo de Soluciones Informáticas (footer)
 ```
@@ -144,7 +143,7 @@ El navbar es idéntico en todas las páginas. Se encuentra justo después del `<
 
     <!-- Logo -->
     <a class="nav-logo" href="./index.html">
-      <img src="assets/logo-navbar.webp" srcset="assets/logo-navbar@2x.webp 2x" alt="SIIFWEB">
+      <img src="assets/logo-navbar.svg" alt="SIIFWEB" width="161" height="40">
     </a>
 
     <!-- Links de navegación -->
@@ -330,8 +329,7 @@ Al cargarse la página:
 |---|---|---|
 | `favicon.ico` | Pestaña del navegador | Si cambia la identidad de marca |
 | `apple-touch-icon.png` | Ícono al guardar en iOS | Si cambia el ícono de la app |
-| `logo-navbar.webp` | Navbar de todas las páginas | Si cambia el logo |
-| `logo-navbar@2x.webp` | Navbar en pantallas Retina | Siempre junto al anterior |
+| `logo-navbar.svg` | Navbar de todas las páginas (blanco sobre el hero vía `filter`, color al hacer scroll) | Si cambia el logo |
 | `siifweb-icon.webp` | Footer (izquierda) | Si cambia el ícono de marca |
 | `soluciones-info.webp` | Footer (derecha) | Si cambia el logo corporativo |
 
