@@ -16,39 +16,6 @@
 }
 .tag-light { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.18) }
 
-/* ── Hero ── */
-.acc-hero {
-  position: relative;
-  background: linear-gradient(160deg, var(--blue) 0%, var(--blue-deep) 100%);
-  padding: calc(64px + clamp(3rem, 8vw, 5rem)) var(--page-pad) clamp(4.5rem, 9vw, 6.5rem);
-  overflow: hidden;
-}
-.acc-hero::before {
-  content: '';
-  position: absolute;
-  top: -220px;
-  right: -160px;
-  width: 560px;
-  height: 560px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,.07) 0%, transparent 68%);
-  pointer-events: none;
-}
-.acc-hero-inner { max-width: var(--site-max); margin: 0 auto; position: relative }
-.acc-hero h1 {
-  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
-  font-weight: 800;
-  color: var(--white);
-  margin-top: 1rem;
-}
-.acc-hero-sub {
-  max-width: 620px;
-  margin-top: 1rem;
-  font-size: clamp(.92rem, 1.4vw, 1.02rem);
-  color: rgba(255,255,255,.72);
-  line-height: 1.7;
-}
-.acc-hero-sub strong { color: rgba(255,255,255,.95); font-weight: 600 }
 /* ── Cuerpo del directorio ── */
 .acc-main { background: #F5F9FD; padding: 0 var(--page-pad) clamp(3.5rem, 7vw, 5rem) }
 .acc-main-inner { max-width: var(--site-max); margin: 0 auto }
@@ -325,4 +292,36 @@
   .acc-toolbar-row { flex-direction: column }
   .acc-search, .acc-select-wrap { flex: none; width: 100%; min-width: 0 }
   .acc-cta { flex-direction: column; align-items: flex-start }
+}
+
+
+/* ═══ Estándar visual v2 ═══ */
+.acc-hero2 { padding-bottom: clamp(4.5rem, 9vw, 6rem) }
+.acc-main { background: #F6F9FC }
+.acc-toolbar { border-radius: 999px; padding: .5rem; margin-top: -2.2rem; max-width: 760px; margin-left: auto; margin-right: auto; box-shadow: 0 18px 44px rgba(11,33,56,.10) }
+.acc-toolbar-row { gap: .5rem; flex-wrap: nowrap }
+.acc-search input { height: 52px; border: none; border-radius: 999px; background: #F3F7FB; font-size: 1rem }
+.acc-search input:focus { box-shadow: 0 0 0 4px rgba(18,100,168,.12); background: #fff }
+.acc-select-wrap select { height: 52px; border: none; border-radius: 999px; background: #F3F7FB; font-weight: 500 }
+.acc-select-wrap select:focus { box-shadow: 0 0 0 4px rgba(18,100,168,.12) }
+.acc-group { margin-top: 2.8rem }
+.acc-group-hd h2 { font-weight: 700; letter-spacing: -.02em }
+.acc-card { border-radius: 22px; border: 1px solid rgba(18,100,168,.09); transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s }
+.acc-card:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(11,33,56,.10); border-color: transparent }
+.acc-avatar { border-radius: 14px }
+.acc-enter { border-radius: 999px; text-transform: none; letter-spacing: 0; font-size: .82rem; font-weight: 600 }
+.acc-empty { border-radius: 22px }
+.acc-empty button { border-radius: 999px }
+.acc-cta { border-radius: 28px; border: none; background: linear-gradient(135deg, #0f5ea5 0%, #1d78c8 60%, #1592a8 100%); box-shadow: 0 24px 60px rgba(18,100,168,.22); padding: clamp(1.8rem, 4vw, 2.6rem) }
+.acc-cta-txt h3 { color: #fff; font-size: 1.3rem; letter-spacing: -.02em }
+.acc-cta-txt p { color: rgba(255,255,255,.82) }
+.acc-cta-btn { border-radius: 999px; text-transform: none; letter-spacing: 0; font-size: .9rem; font-weight: 600 }
+.acc-cta-btn--solid { background: #fff; color: var(--blue); border-color: #fff }
+.acc-cta-btn--solid:hover { background: var(--blue-soft); border-color: var(--blue-soft); color: var(--blue-deep) }
+.acc-cta-btn--ghost { color: #fff; border-color: rgba(255,255,255,.4) }
+.acc-cta-btn--ghost:hover { background: rgba(255,255,255,.12) }
+@media (max-width: 600px) {
+  .acc-toolbar { border-radius: 24px }
+  .acc-toolbar-row { flex-wrap: wrap }
+  .acc-select-wrap { flex: 1 1 100% }
 }

@@ -187,7 +187,8 @@ function moduleIconSvg(name, groupId) {
 const sideNav = document.getElementById('side-nav');
 const sections = document.getElementById('sections');
 
-modulesData.forEach(group => {
+const PALETTE = [['#1264A8','#EAF3FB'],['#0F9D8A','#E3F5F1'],['#E08A1E','#FDF3E3'],['#7C5CD6','#F0ECFB'],['#D9534F','#FCEDEC'],['#1E88D9','#E6F2FC'],['#2E9E5B','#E5F5EB']];
+modulesData.forEach((group, gi) => {
   const navLink = document.createElement('a');
   navLink.href = `#${group.id}`;
   navLink.textContent = group.title;
@@ -196,6 +197,9 @@ modulesData.forEach(group => {
   const section = document.createElement('section');
   section.className = 'section';
   section.id = group.id;
+  const [acc, tint] = PALETTE[gi % PALETTE.length];
+  section.style.setProperty('--acc', acc);
+  section.style.setProperty('--tint', tint);
 
   const cards = group.modules.map(module => `
     <article class="card">
@@ -239,9 +243,8 @@ if (firstLink) firstLink.classList.add('active');
 
 /* ── Nav scroll effect (same as index) ── */
 const nav = document.getElementById('nav');
-const heroEl = document.querySelector('.hero');
 function checkNav() {
-  nav.classList.toggle('scrolled', window.scrollY > heroEl.offsetHeight - 80);
+  nav.classList.toggle('scrolled', window.scrollY > 10);
 }
 window.addEventListener('scroll', checkNav, { passive: true });
 checkNav();
@@ -284,3 +287,42 @@ if (accessBtn) {
     }
   });
 }
+
+/* ── Búsqueda de módulos ── */
+(function () {
+  const q = document.getElementById('mod-q');
+  const empty = document.getElementById('mod-empty');
+  if (!q) return;
+  const norm = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const cards = [...document.querySelectorAll('.card')].map(card => {
+    const h = card.querySelector('h3');
+    return { card, h, html: h.innerHTML, text: norm(card.textContent) };
+  });
+  q.addEventListener('input', () => {
+    const term = norm(q.value.trim());
+    cards.forEach(c => {
+      const hit = !term || c.text.includes(term);
+      c.card.hidden = !hit;
+      c.h.innerHTML = c.html;
+      if (term && hit) {
+        const plain = c.h.textContent, i = norm(plain).indexOf(term);
+        if (i > -1) {
+          const esc = x => x.replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[ch]);
+          c.h.innerHTML = esc(plain.slice(0, i)) + '<mark>' + esc(plain.slice(i, i + term.length)) + '</mark>' + esc(plain.slice(i + term.length));
+        }
+      }
+    });
+    let any = false;
+    document.querySelectorAll('.section').forEach(sec => {
+      const visible = sec.querySelectorAll('.card:not([hidden])').length;
+      sec.hidden = visible === 0;
+      const count = sec.querySelector('.section-count');
+      const total = sec.querySelectorAll('.card').length;
+      count.innerHTML = term ? visible + ' de ' + total + ' m&oacute;dulos' : total + ' m&oacute;dulos';
+      any = any || visible > 0;
+      const link = sideNav.querySelector(`a[href="#${sec.id}"]`);
+      if (link) link.hidden = visible === 0;
+    });
+    empty.hidden = any;
+  });
+}());
