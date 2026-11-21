@@ -75,3 +75,7 @@ h1, h2, h3, h4 { letter-spacing: -.02em }
 .page-hero--center .page-hero-sub { margin: 0 auto }
 @media (prefers-reduced-motion: reduce) { .page-hero-bg i, .page-hero-inner > * { animation: none } }
 [hidden] { display: none !important }
+
+/* ── Pie de página: marca azul ── */
+.footer-icon { display: inline-block; width: 34px; height: 32px; overflow: hidden; opacity: .9; flex-shrink: 0 }
+.footer-icon img { height: 32px; width: auto; max-width: none }
