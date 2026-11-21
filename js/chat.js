@@ -70,7 +70,7 @@
       id: 'seguridad',
       keys: ['seguridad', 'seguro', 'certificación', 'iso', 'cumplimiento', 'normativa', 'confiable', 'datos'],
       q: '¿Es seguro?',
-      a: 'Sí. Operamos bajo la norma <strong>ISO/IEC 27001</strong>. Nuestra infraestructura en <strong>AWS y Oracle Cloud</strong> garantiza redundancia geográfica y disponibilidad del <strong>99,9%</strong>. Cumplimos con MIPG, CHIP, SECOP II y toda la normativa de Gobierno Digital colombiano.'
+      a: 'Sí. Operamos bajo la norma <strong>ISO/IEC 27001</strong>. Nuestra infraestructura en <strong>AWS y Oracle Cloud</strong> garantiza redundancia geográfica y disponibilidad del <strong>99%</strong>. Cumplimos con MIPG, CHIP, SECOP II y toda la normativa de Gobierno Digital colombiano.'
     },
     {
       id: 'demo',
