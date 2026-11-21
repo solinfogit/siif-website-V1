@@ -70,7 +70,7 @@
       id: 'seguridad',
       keys: ['seguridad', 'seguro', 'certificación', 'iso', 'cumplimiento', 'normativa', 'confiable', 'datos'],
       q: '¿Es seguro?',
-      a: 'Sí. Operamos bajo la norma <strong>ISO/IEC 27001</strong>. Nuestra infraestructura en <strong>AWS y Oracle Cloud</strong> garantiza redundancia geográfica y disponibilidad del <strong>99.999%</strong>. Cumplimos con MIPG, CHIP, SECOP II y toda la normativa de Gobierno Digital colombiano.'
+      a: 'Sí. Operamos bajo la norma <strong>ISO/IEC 27001</strong>. Nuestra infraestructura en <strong>AWS y Oracle Cloud</strong> garantiza redundancia geográfica y disponibilidad del <strong>99,9%</strong>. Cumplimos con MIPG, CHIP, SECOP II y toda la normativa de Gobierno Digital colombiano.'
     },
     {
       id: 'demo',
@@ -88,7 +88,7 @@
       id: 'entidades',
       keys: ['entidades', 'municipios', 'alcaldías', 'gobernaciones', 'clientes', 'quiénes', 'quienes', 'usan', 'atienden'],
       q: '¿Qué entidades usan SIIFWEB?',
-      a: 'SIIFWEB acompaña a <strong>más de 100 entidades territoriales</strong>: alcaldías, gobernaciones, empresas sociales del Estado y entes descentralizados en todo el territorio colombiano. Con más de <strong>20 años</strong> de experiencia, conocemos profundamente la realidad operativa del sector público.'
+      a: 'SIIFWEB ha acompañado a <strong>más de 50 entidades territoriales</strong>: alcaldías, gobernaciones, empresas sociales del Estado y entes descentralizados en todo el territorio colombiano. Con más de <strong>20 años</strong> de experiencia, conocemos profundamente la realidad operativa del sector público.'
     }
   ];
 

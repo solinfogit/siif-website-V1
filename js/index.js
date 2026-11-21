@@ -93,7 +93,7 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
   if (!els.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const fmt = (el, v) => {
     const dec = +(el.dataset.dec || 0);
-    el.textContent = (el.dataset.prefix || '') + v.toFixed(dec) + (el.dataset.suffix || '');
+    el.textContent = (el.dataset.prefix || '') + v.toFixed(dec).replace('.', ',') + (el.dataset.suffix || '');
   };
   const run = el => {
     const target = parseFloat(el.dataset.count);
