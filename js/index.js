@@ -123,7 +123,7 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
   const WA = '573163534433';               // WhatsApp comercial (Juan Valentín)
   const HUBSPOT = {
     portalId: '51079095',
-    formId: ''                              // GUID del formulario en HubSpot; vacío = no se envía
+    formId: 'bfe70095-cdab-497f-934e-d5dab1a05797'   // Formulario HubSpot (vacío = no se envía)
   };
   form.addEventListener('input', e => e.target.classList && e.target.classList.remove('err'));
   form.addEventListener('submit', e => {
