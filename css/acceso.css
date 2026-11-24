@@ -325,7 +325,3 @@
   .acc-toolbar-row { flex-wrap: wrap }
   .acc-select-wrap { flex: 1 1 100% }
 }
-
-/* Marca SIIFWEB+ (plataforma nueva) */
-.plus-chip { display: inline-grid; place-items: center; min-width: 17px; height: 17px; margin-left: .2rem; padding: 0 .2rem; border-radius: 6px; background: linear-gradient(135deg, #1264A8 0%, #0F9D8A 100%); color: #fff; font-size: .8rem; font-weight: 800; line-height: 1; box-shadow: 0 2px 6px rgba(15,157,138,.35); transition: background .2s }
-.acc-enter:hover .plus-chip { background: #fff; color: var(--blue); box-shadow: none }
