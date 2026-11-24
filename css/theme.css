@@ -81,11 +81,11 @@ h1, h2, h3, h4 { letter-spacing: -.02em }
 .footer-icon img { height: 32px; width: auto; max-width: none }
 
 /* ── Marca SIIFWEB+ (plataforma nueva) ── */
-.plus-chip { position: relative; top: -.45em; display: inline-grid; place-items: center; width: 1.45em; height: 1.45em; margin-left: -.12em; padding: 0; font-family: 'Montserrat', sans-serif; font-size: .72em; font-weight: 800; line-height: 1; color: #fff; border-radius: 50%; background: linear-gradient(135deg, #1E88D9 0%, #0F9D8A 100%); box-shadow: 0 0 0 1.5px #fff, 0 2px 6px rgba(15,157,138,.4); transition: background .2s, color .2s, box-shadow .2s }
-.acc-enter .plus-chip { font-size: .85em; top: -.42em; margin-left: -.12em; margin-right: .2em }
-.acc-enter:hover .plus-chip { background: #fff; color: var(--blue); box-shadow: 0 0 0 2px var(--blue) }
+.plus-chip { display: inline-grid; place-items: center; width: 1.3em; height: 1.3em; margin-left: .12em; padding: 0; font-family: 'Montserrat', sans-serif; font-size: .78em; font-weight: 800; line-height: 1; color: #fff; border-radius: .38em; background: linear-gradient(135deg, #1E88D9 0%, #0F9D8A 100%); box-shadow: 0 2px 6px rgba(15,157,138,.35); vertical-align: middle; transition: background .2s, color .2s, box-shadow .2s }
+.acc-enter .plus-chip { font-size: .9em; margin-left: calc(-.4rem + .1em) }
+.acc-enter:hover .plus-chip { background: #fff; color: var(--blue); box-shadow: none }
 .brand-plus { display: inline-flex; align-items: center; gap: 0; font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--blue); white-space: nowrap }
 .access-item-desc .brand-plus { font-weight: 700 }
-.fl .plus-chip { color: #fff; box-shadow: 0 0 0 2px #0B1622, 0 3px 10px rgba(15,157,138,.5) }
+.fl .plus-chip { color: #fff }
 #nav .nav-mob-access > a .brand-plus { margin-left: .35rem; padding: 0; font-size: .8rem; text-transform: none; letter-spacing: 0 }
 #nav .nav-mob-access .plus-chip { display: inline-grid; padding: 0; color: #fff }
