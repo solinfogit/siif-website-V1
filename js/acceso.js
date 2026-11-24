@@ -42,13 +42,22 @@
   }
 
   function card(e) {
-    const pending = e.estado !== 'activo' || !e.url;
+    const active = e.estado === 'activo';
+    const hasSiif = active && !!e.url;
+    const hasSync = active && !!e.urlProcesos;
+    const pending = !hasSiif && !hasSync;
     const arrow = '<svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5l7-7M9.5 2.5H4M9.5 2.5v5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    let action = pending
-      ? '<span class="acc-enter acc-enter--pending">Pr&oacute;ximamente</span>'
-      : '<a class="acc-enter" href="' + esc(e.url) + '" target="_blank" rel="noreferrer" aria-label="SIIFWEB+">SIIFWEB<span class="plus-chip" aria-hidden="true">+</span>' + arrow + '</a>';
-    if (!pending && e.urlProcesos) {
-      action = '<a class="acc-enter acc-enter--alt" href="' + esc(e.urlProcesos) + '" target="_blank" rel="noreferrer">Synchrox' + arrow + '</a>' + action;
+    const siifLabel = 'SIIFWEB<span class="plus-chip" aria-hidden="true">+</span>';
+    let action = '';
+    if (hasSync) {
+      action += '<a class="acc-enter acc-enter--alt" href="' + esc(e.urlProcesos) + '" target="_blank" rel="noreferrer">Synchrox' + arrow + '</a>';
+    }
+    if (hasSiif) {
+      action += '<a class="acc-enter" href="' + esc(e.url) + '" target="_blank" rel="noreferrer" aria-label="SIIFWEB+">' + siifLabel + arrow + '</a>';
+    } else if (hasSync) {
+      action += '<span class="acc-enter acc-enter--pending" title="SIIFWEB+ pr&oacute;ximamente">' + siifLabel + ' &middot; Pronto</span>';
+    } else {
+      action = '<span class="acc-enter acc-enter--pending">Pr&oacute;ximamente</span>';
     }
     return '<article class="acc-card' + (pending ? ' acc-card--pending' : '') + '">' +
       '<div class="acc-card-top">' +

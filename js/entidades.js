@@ -14,8 +14,9 @@
    }
 
    Notas:
-   - Si `url` queda vacía (""), la tarjeta se muestra como "Próximamente"
-     aunque el estado sea "activo".
+   - Si `url` queda vacía (""), el botón SIIFWEB+ se muestra como "Pronto".
+     Si también `urlProcesos` está vacía, la tarjeta completa queda en
+     "Próximamente".
    - Las entidades que aún operan en la versión anterior NO van aquí:
      su acceso sigue siendo colombiagestiona.com.
    ═══════════════════════════════════════════════════════════════════ */
@@ -46,39 +47,36 @@ const ENTIDADES = [
     estado: "activo"
   },
   {
-    // TODO: URLs temporales (UCEVA) — reemplazar por las de la entidad
     nombre: "Empresa de Aseo de Pereira",
     departamento: "Risaralda",
     municipio: "Pereira",
-    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
-    urlProcesos: "https://servicio.siifweb.com/",
+    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=816002017",
+    urlProcesos: "https://new.servicio.siifweb.com/",
     estado: "activo"
   },
   {
-    // TODO: URLs temporales (UCEVA) — reemplazar por las de la entidad
     nombre: "Área Metropolitana Centro Occidente",
     departamento: "Risaralda",
     municipio: "Pereira",
-    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
-    urlProcesos: "https://servicio.siifweb.com/",
+    url: "",
+    urlProcesos: "https://new.servicio-oci.siifweb.com/",
     estado: "activo"
   },
   {
-    // TODO: URLs temporales (UCEVA) — reemplazar por las de la entidad
     nombre: "Parque Temático Ukumarí",
     departamento: "Risaralda",
     municipio: "Pereira",
-    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
-    urlProcesos: "https://servicio.siifweb.com/",
+    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=900811423",
+    urlProcesos: "https://new.servicio.siifweb.com/",
     estado: "activo"
   },
   {
-    // TODO: URLs temporales (UCEVA) — reemplazar por las de la entidad
+    // TODO: falta confirmar el NIT para el enlace SIIFWEB+
     nombre: "Beneficencia del Valle — Lotería del Valle",
     departamento: "Valle del Cauca",
     municipio: "Cali",
-    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
-    urlProcesos: "https://servicio.siifweb.com/",
+    url: "",
+    urlProcesos: "https://new.servicio.siifweb.com/",
     estado: "activo"
   }
 ];
