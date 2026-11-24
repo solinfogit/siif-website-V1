@@ -81,12 +81,11 @@ h1, h2, h3, h4 { letter-spacing: -.02em }
 .footer-icon img { height: 32px; width: auto; max-width: none }
 
 /* ── Marca SIIFWEB+ (plataforma nueva) ── */
-.plus-chip { display: inline-grid; place-items: center; min-width: 17px; height: 17px; margin-left: .2rem; padding: 0 .2rem; border-radius: 6px; background: linear-gradient(135deg, #1264A8 0%, #0F9D8A 100%); color: #fff; font-family: 'Montserrat', sans-serif; font-size: .8rem; font-weight: 800; line-height: 1; vertical-align: middle; box-shadow: 0 2px 6px rgba(15,157,138,.35); transition: background .2s }
-.acc-enter:hover .plus-chip { background: #fff; color: var(--blue); box-shadow: none }
-.brand-plus { display: inline-flex; align-items: center; font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--blue); white-space: nowrap }
-.access-item-desc .plus-chip { min-width: 14px; height: 14px; font-size: .68rem; border-radius: 5px; margin-left: .15rem }
+.plus-chip { position: relative; top: -.8em; display: inline-grid; place-items: center; width: 1.55em; height: 1.55em; margin-left: .1em; padding: 0; font-family: 'Montserrat', sans-serif; font-size: .72em; font-weight: 800; line-height: 1; color: #fff; border-radius: 50%; background: linear-gradient(135deg, #1E88D9 0%, #0F9D8A 100%); box-shadow: 0 0 0 2px #fff, 0 3px 8px rgba(15,157,138,.45); transition: background .2s, color .2s, box-shadow .2s }
+.acc-enter .plus-chip { font-size: .85em; top: -.75em; margin-left: 0; margin-right: .05em }
+.acc-enter:hover .plus-chip { background: #fff; color: var(--blue); box-shadow: 0 0 0 2px var(--blue) }
+.brand-plus { display: inline-flex; align-items: center; gap: 0; font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--blue); white-space: nowrap }
 .access-item-desc .brand-plus { font-weight: 700 }
-#nav .nav-mob-access > a .brand-plus { margin-left: .35rem; font-size: .8rem }
-.fl .plus-chip { color: #fff; margin-left: .25rem; min-width: 20px; height: 20px; font-size: .95rem }
-#nav .nav-mob-access .brand-plus { display: inline-flex; gap: 0; padding: 0; color: var(--blue); font-weight: 800; text-transform: none; letter-spacing: 0 }
-#nav .nav-mob-access .plus-chip { display: inline-grid; padding: 0 .2rem; color: #fff; font-size: .7rem; min-width: 15px; height: 15px }
+.fl .plus-chip { color: #fff; box-shadow: 0 0 0 2px #0B1622, 0 3px 10px rgba(15,157,138,.5) }
+#nav .nav-mob-access > a .brand-plus { margin-left: .35rem; padding: 0; font-size: .8rem; text-transform: none; letter-spacing: 0 }
+#nav .nav-mob-access .plus-chip { display: inline-grid; padding: 0; color: #fff }
