@@ -55,7 +55,7 @@ const ENTIDADES = [
     estado: "activo"
   },
   {
-    nombre: "Área Metropolitana Centro Occidente",
+    nombre: "Área Metropolitana Centro Occidente (AMCO)",
     departamento: "Risaralda",
     municipio: "Pereira",
     url: "",
