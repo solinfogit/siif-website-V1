@@ -476,6 +476,11 @@
 .cta-done-ico svg { width: 30px; height: 30px }
 .cta-done h3 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--ink) }
 .cta-done p { color: var(--ink-mid); max-width: 34ch; font-size: .95rem }
+.cta-done-wa { display: inline-flex; align-items: center; gap: .5rem; margin-top: .9rem; font-family: 'Montserrat', sans-serif; font-size: .92rem; font-weight: 600; color: #fff; background: #25D366; padding: .75rem 1.4rem; border-radius: 999px; box-shadow: 0 6px 16px rgba(37,211,102,.3); transition: transform .2s var(--ease), background .2s }
+.cta-done-wa:hover { background: #1EBE5A; transform: translateY(-2px) }
+.cta-error { margin-top: .9rem; text-align: center; font-size: .85rem; color: #B42318; background: #FEF3F2; border: 1px solid #FECDCA; border-radius: 12px; padding: .7rem 1rem }
+.cta-error a { color: inherit; font-weight: 600; text-decoration: underline }
+.cta-submit:disabled { opacity: .7; cursor: wait; transform: none }
 .cta-again { margin-top: .8rem; background: none; border: none; color: var(--blue); font: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px }
 @media (max-width: 860px) { .cta-inner { grid-template-columns: 1fr } }
 @media (max-width: 520px) { .cta-form-grid { grid-template-columns: 1fr } }
