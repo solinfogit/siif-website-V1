@@ -17,6 +17,13 @@
    - Si `url` queda vacía (""), el botón SIIFWEB+ se muestra como "Pronto".
      Si también `urlProcesos` está vacía, la tarjeta completa queda en
      "Próximamente".
+   - Nomenclatura de URLs de SIIFWEB+ (APEX), decidida en nov. 2026:
+       · Servidor compartido principal ...... app.siifweb.com     (hoy apx-servicio)
+       · Segundo servidor compartido ........ portal.siifweb.com  (hoy servicio-oci)
+       · Cliente con instalación propia ..... app-{cliente}.siifweb.com
+       · Synchrox de cliente propio ......... {cliente}.siifweb.com
+     En los compartidos la entidad se elige con ?p9999_nit_compania={NIT}.
+     Mientras esos nombres no existan en el DNS se siguen usando los actuales.
    - Las entidades que aún operan en la versión anterior NO van aquí:
      su acceso sigue siendo colombiagestiona.com.
    ═══════════════════════════════════════════════════════════════════ */
