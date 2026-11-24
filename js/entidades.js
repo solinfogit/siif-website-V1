@@ -23,7 +23,7 @@
 
 const ENTIDADES = [
   {
-    nombre: "UCEVA",
+    nombre: "Unidad Central del Valle del Cauca (UCEVA)",
     departamento: "Valle del Cauca",
     municipio: "Tuluá",
     url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
@@ -31,7 +31,7 @@ const ENTIDADES = [
     estado: "activo"
   },
   {
-    nombre: "Soluciones de Información",
+    nombre: "Soluciones de Información S.A.S. (Solinfo)",
     departamento: "Risaralda",
     municipio: "Pereira",
     url: "https://apx-solinfo.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=900293512",
@@ -39,7 +39,7 @@ const ENTIDADES = [
     estado: "activo"
   },
   {
-    nombre: "Alcaldía de Santa Marta",
+    nombre: "Alcaldía Distrital de Santa Marta",
     departamento: "Magdalena",
     municipio: "Santa Marta",
     url: "https://apx-santamarta.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891780009",
@@ -47,7 +47,7 @@ const ENTIDADES = [
     estado: "activo"
   },
   {
-    nombre: "Empresa de Aseo de Pereira",
+    nombre: "Empresa de Aseo de Pereira S.A.S. E.S.P. (Aseo Pereira)",
     departamento: "Risaralda",
     municipio: "Pereira",
     url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=816002017",
@@ -63,7 +63,7 @@ const ENTIDADES = [
     estado: "activo"
   },
   {
-    nombre: "Parque Temático Ukumarí",
+    nombre: "Parque Temático de Flora y Fauna de Pereira (Ukumarí)",
     departamento: "Risaralda",
     municipio: "Pereira",
     url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=900811423",
@@ -71,7 +71,7 @@ const ENTIDADES = [
     estado: "activo"
   },
   {
-    nombre: "Beneficencia del Valle — Lotería del Valle",
+    nombre: "Beneficencia del Valle del Cauca (Lotería del Valle)",
     departamento: "Valle del Cauca",
     municipio: "Cali",
     url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=890399027",

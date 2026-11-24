@@ -16,14 +16,17 @@
   /* Iniciales para el avatar: dos letras significativas del nombre */
   const STOP = new Set(['de', 'del', 'la', 'las', 'los', 'el', 'y', 'e']);
   function initials(nombre) {
-    // Si el nombre trae sigla entre paréntesis, p. ej. "(AMCO)", se usa la sigla
-    const sigla = nombre.match(/\(([A-Za-zÁÉÍÓÚÑ]{2,})\)/);
-    if (sigla) return sigla[1].slice(0, 2).toUpperCase();
-    const words = nombre.replace(/\(.*?\)/g, ' ').split(/[\s—–-]+/).filter(w => /[A-Za-zÁÉÍÓÚÑáéíóúñ]/.test(w) && !STOP.has(norm(w)));
-    if (!words.length) return '?';
-    if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
-    return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+    const pick = txt => {
+      const words = txt.split(/[\s—–-]+/).filter(w => /[A-Za-zÁÉÍÓÚÑáéíóúñ]/.test(w) && !/\./.test(w) && !STOP.has(norm(w)));
+      if (!words.length) return '?';
+      if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+      return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+    };
+    // Si el nombre trae la abreviatura entre paréntesis, las iniciales salen de ahí
+    const abbr = nombre.match(/\(([^)]+)\)\s*$/);
+    return pick(abbr ? abbr[1] : nombre.replace(/\(.*?\)/g, ' '));
   }
+
 
   /* ── Select de departamentos (a partir de los datos) ── */
   [...new Set(ENTIDADES.map(e => e.departamento))]
