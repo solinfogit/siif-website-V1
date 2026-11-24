@@ -115,61 +115,135 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
   function dec0(el) { return +(el.dataset.dec || 0) ? parseFloat(el.dataset.count) - 9 : 0; }
 }());
 
-/* ── Formulario de demo → HubSpot (+ correo de aviso) ── */
+/* ── Formulario de demo por pasos → HubSpot (+ correo de aviso) ── */
 (function () {
   const form = document.getElementById('demo-form');
   if (!form) return;
+  const steps = [...form.querySelectorAll('.stp')];
   const done = form.querySelector('.cta-done');
   const error = form.querySelector('.cta-error');
+  const stepErr = form.querySelector('.stp-err');
+  const btnBack = form.querySelector('.stp-back');
+  const btnNext = form.querySelector('.stp-next');
   const submit = form.querySelector('.cta-submit');
   const submitHtml = submit.innerHTML;
+  const bar = form.querySelector('.stp-bar i');
+  const count = form.querySelector('.stp-count b');
+  const name = form.querySelector('.stp-name');
   const WA = '573163534433';               // WhatsApp comercial (Juan Valentín)
   const HUBSPOT = {
     portalId: '51079095',
     formId: 'bfe70095-cdab-497f-934e-d5dab1a05797'
   };
-  form.addEventListener('input', e => e.target.classList && e.target.classList.remove('err'));
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
+  let current = 0;
+
+  const v = n => {
+    const el = form.elements[n];
+    if (!el) return '';
+    if (el instanceof RadioNodeList || el.length > 1 && !el.tagName) return (el.value || '').trim();
+    return (el.value || '').trim();
+  };
+  const checked = n => [...form.querySelectorAll('input[name="' + n + '"]:checked')].map(i => i.value);
+  const plain = t => { const d = document.createElement('textarea'); d.innerHTML = t; return d.value; };
+
+  function show(i, dir) {
+    steps.forEach((s, k) => {
+      s.hidden = k !== i;
+      s.classList.toggle('back', dir === 'back');
+    });
+    current = i;
+    bar.style.width = ((i + 1) / steps.length * 100) + '%';
+    count.textContent = i + 1;
+    name.textContent = steps[i].dataset.name;
+    btnBack.hidden = i === 0;
+    btnNext.hidden = i === steps.length - 1;
+    submit.hidden = i !== steps.length - 1;
+    stepErr.hidden = true;
+  }
+
+  function validate(i) {
+    const step = steps[i];
     let first = null;
-    form.querySelectorAll('[required]').forEach(el => {
-      const ok = el.value.trim() && (el.type !== 'email' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim()));
+    step.querySelectorAll('[required]').forEach(el => {
+      const val = el.value.trim();
+      const ok = val && (el.type !== 'email' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val));
       el.classList.toggle('err', !ok);
       if (!ok && !first) first = el;
     });
-    if (first) { first.focus(); return; }
-    const v = n => (form.elements[n] && form.elements[n].value || '').trim();
-    const intereses = [...form.querySelectorAll('input[name="interes"]:checked')].map(i => i.value);
+    step.querySelectorAll('[data-required]').forEach(group => {
+      const ok = group.querySelector('input:checked');
+      group.classList.toggle('err', !ok);
+      if (!ok && !first) first = group.querySelector('input');
+    });
+    stepErr.hidden = !first;
+    if (first) first.focus({ preventScroll: true });
+    return !first;
+  }
+
+  form.addEventListener('input', e => {
+    e.target.classList && e.target.classList.remove('err');
+    const group = e.target.closest && e.target.closest('[data-required]');
+    if (group) group.classList.remove('err');
+    if (!form.querySelector('.err')) stepErr.hidden = true;
+  });
+  // Tipo de entidad: al elegirlo, el foco pasa al nombre de la entidad
+  form.querySelectorAll('input[name="tipo"]').forEach(r => r.addEventListener('change', () => form.elements.entidad.focus({ preventScroll: true })));
+  // Enter en un campo de texto avanza de paso en vez de enviar
+  form.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT' && current < steps.length - 1) {
+      e.preventDefault();
+      btnNext.click();
+    }
+  });
+  const keepInView = () => {
+    const top = form.getBoundingClientRect().top;
+    if (top < 70) window.scrollBy({ top: top - 80, behavior: 'smooth' });
+  };
+  btnNext.addEventListener('click', () => { if (validate(current)) { show(current + 1); keepInView(); } });
+  btnBack.addEventListener('click', () => { show(current - 1, 'back'); keepInView(); });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    for (let i = 0; i < steps.length; i++) {
+      if (!validate(i)) { show(i); validate(i); return; }
+    }
+    const tipo = plain(v('tipo'));
+    const intereses = checked('interes').map(plain);
+    const plazo = plain(v('plazo'));
+    const sistema = plain(v('sistema'));
 
     // Mensaje de WhatsApp pre-llenado (solo si la persona elige seguir por WhatsApp)
     const lines = [
       'Hola, acabo de solicitar una demo de SIIFWEB.',
       '',
       '*Nombre:* ' + v('nombre') + (v('cargo') ? ' (' + v('cargo') + ')' : ''),
-      '*Entidad:* ' + v('entidad') + (v('tipo') ? ' — ' + v('tipo') : ''),
+      '*Entidad:* ' + v('entidad') + (tipo ? ' — ' + tipo : ''),
       '*Correo:* ' + v('correo')
     ];
     if (v('telefono')) lines.push('*Teléfono:* ' + v('telefono'));
     if (intereses.length) lines.push('*Me interesa:* ' + intereses.join(', '));
+    if (plazo) lines.push('*Plazo:* ' + plazo);
     if (v('mensaje')) lines.push('', v('mensaje'));
     const waHref = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n'));
     form.querySelectorAll('.cta-done-wa, .cta-error-wa').forEach(a => { a.href = waHref; });
 
     const nota = [
       'Entidad: ' + v('entidad'),
-      v('tipo') && 'Tipo de entidad: ' + v('tipo'),
+      tipo && 'Tipo de entidad: ' + tipo,
       intereses.length && 'Le interesa: ' + intereses.join(', '),
+      plazo && 'Plazo de implementación: ' + plazo,
+      sistema && 'Sistema actual: ' + sistema,
       v('mensaje') && 'Mensaje: ' + v('mensaje')
     ].filter(Boolean).join('\n');
-    const field = (name, value) => ({ objectTypeId: '0-1', name, value });
+    const field = (n, value) => ({ objectTypeId: '0-1', name: n, value });
     const fields = [
       field('firstname', v('nombre')),
       field('email', v('correo')),
-      field('company', v('entidad'))
+      field('company', v('entidad')),
+      field('message', nota)
     ];
     if (v('cargo')) fields.push(field('jobtitle', v('cargo')));
     if (v('telefono')) fields.push(field('phone', v('telefono')));
-    if (nota) fields.push(field('message', nota));
 
     error.hidden = true;
     submit.disabled = true;
@@ -189,13 +263,18 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
       submit.innerHTML = submitHtml;
     }
   });
-  // Confirmación: editar (conserva los datos) o cerrar (limpia el formulario)
+
+  // Confirmación: editar (vuelve al inicio con los datos) o cerrar (limpia el formulario)
   form.querySelector('.cta-edit').addEventListener('click', () => {
     done.hidden = true;
-    form.elements.nombre.focus();
+    show(0, 'back');
   });
   form.querySelector('.cta-close').addEventListener('click', () => {
     form.reset();
+    form.querySelectorAll('.err').forEach(el => el.classList.remove('err'));
     done.hidden = true;
+    show(0, 'back');
   });
+
+  show(0);
 }());

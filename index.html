@@ -333,52 +333,62 @@
         </div>
       </div>
       <form class="cta-form d2" id="demo-form" novalidate>
-        <div class="cta-form-hd"><h3>Cu&eacute;ntenos sobre su entidad</h3><p>Los campos con * son obligatorios.</p></div>
-        <div class="cta-form-grid">
-          <div class="cta-field">
-            <label class="cta-label" for="cta-nombre">Nombre *</label>
-            <input class="cta-input" id="cta-nombre" name="nombre" type="text" autocomplete="name" placeholder="Su nombre completo" required>
-          </div>
-          <div class="cta-field">
-            <label class="cta-label" for="cta-cargo">Cargo</label>
-            <input class="cta-input" id="cta-cargo" name="cargo" type="text" autocomplete="organization-title" placeholder="Ej. Secretario de Hacienda">
-          </div>
-          <div class="cta-field">
-            <label class="cta-label" for="cta-entidad">Entidad *</label>
-            <input class="cta-input" id="cta-entidad" name="entidad" type="text" autocomplete="organization" placeholder="Nombre de la entidad" required>
-          </div>
-          <div class="cta-field">
-            <label class="cta-label" for="cta-tipo">Tipo de entidad</label>
-            <select class="cta-input cta-select" id="cta-tipo" name="tipo">
-              <option value="">Seleccione&hellip;</option>
-              <option>Alcald&iacute;a</option>
-              <option>Gobernaci&oacute;n</option>
-              <option>Empresa de servicios p&uacute;blicos</option>
-              <option>Hospital / ESE</option>
-              <option>Instituci&oacute;n educativa</option>
-              <option>Entidad descentralizada</option>
-              <option>Otra</option>
-            </select>
-          </div>
-          <div class="cta-field">
-            <label class="cta-label" for="cta-correo">Correo *</label>
-            <input class="cta-input" id="cta-correo" name="correo" type="email" autocomplete="email" placeholder="correo@entidad.gov.co" required>
-          </div>
-          <div class="cta-field">
-            <label class="cta-label" for="cta-telefono">Tel&eacute;fono</label>
-            <input class="cta-input" id="cta-telefono" name="telefono" type="tel" autocomplete="tel" placeholder="300 000 0000">
-          </div>
-          <fieldset class="cta-field cta-field--full cta-chips">
-            <legend class="cta-label">&iquest;Qu&eacute; le interesa?</legend>
-            <div class="mchips"><label class="mchip"><input type="checkbox" name="interes" value="Presupuesto"><span>Presupuesto</span></label><label class="mchip"><input type="checkbox" name="interes" value="Contabilidad"><span>Contabilidad</span></label><label class="mchip"><input type="checkbox" name="interes" value="Tesorer&iacute;a"><span>Tesorer&iacute;a</span></label><label class="mchip"><input type="checkbox" name="interes" value="N&oacute;mina"><span>N&oacute;mina</span></label><label class="mchip"><input type="checkbox" name="interes" value="Contrataci&oacute;n"><span>Contrataci&oacute;n</span></label><label class="mchip"><input type="checkbox" name="interes" value="Gesti&oacute;n documental"><span>Gesti&oacute;n documental</span></label><label class="mchip"><input type="checkbox" name="interes" value="Plataforma completa"><span>Plataforma completa</span></label></div>
-          </fieldset>
-          <div class="cta-field cta-field--full">
-            <label class="cta-label" for="cta-mensaje">Mensaje</label>
-            <textarea class="cta-textarea" id="cta-mensaje" name="mensaje" placeholder="Cu&eacute;ntenos brevemente qu&eacute; necesita o qu&eacute; proceso desea mejorar"></textarea>
-          </div>
+        <div class="stp-head">
+          <div class="stp-meta"><span class="stp-count">Paso <b>1</b> de 3</span><span class="stp-name">Su entidad</span></div>
+          <div class="stp-bar" aria-hidden="true"><i></i></div>
         </div>
-        <button type="submit" class="btn cta-submit">Solicitar mi demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <p class="cta-note">Sus datos se tratan seg&uacute;n nuestra <a href="./politica-privacidad.html">pol&iacute;tica de privacidad</a>.</p>
+
+        <fieldset class="stp" data-step="1" data-name="Su entidad">
+          <legend class="stp-q">&iquest;Qu&eacute; tipo de entidad representa?</legend>
+          <div class="opts opts--grid" data-required="tipo"><label class="opt"><input type="radio" name="tipo" value="Alcald&iacute;a"><span>Alcald&iacute;a</span></label><label class="opt"><input type="radio" name="tipo" value="Gobernaci&oacute;n"><span>Gobernaci&oacute;n</span></label><label class="opt"><input type="radio" name="tipo" value="Hospital / ESE"><span>Hospital / ESE</span></label><label class="opt"><input type="radio" name="tipo" value="Empresa de servicios p&uacute;blicos"><span>Empresa de servicios p&uacute;blicos</span></label><label class="opt"><input type="radio" name="tipo" value="Instituci&oacute;n educativa"><span>Instituci&oacute;n educativa</span></label><label class="opt"><input type="radio" name="tipo" value="Otra entidad"><span>Otra entidad</span></label></div>
+          <div class="cta-field">
+            <label class="cta-label" for="cta-entidad">Nombre de la entidad *</label>
+            <input class="cta-input" id="cta-entidad" name="entidad" type="text" autocomplete="organization" placeholder="Ej. Alcald&iacute;a de Pereira" required>
+          </div>
+        </fieldset>
+
+        <fieldset class="stp" data-step="2" data-name="Su necesidad" hidden>
+          <legend class="stp-q">&iquest;Qu&eacute; le gustar&iacute;a ver en la demo?</legend>
+          <div class="opts" data-required="interes"><label class="opt"><input type="checkbox" name="interes" value="Presupuesto"><span>Presupuesto</span></label><label class="opt"><input type="checkbox" name="interes" value="Contabilidad"><span>Contabilidad</span></label><label class="opt"><input type="checkbox" name="interes" value="Tesorer&iacute;a"><span>Tesorer&iacute;a</span></label><label class="opt"><input type="checkbox" name="interes" value="N&oacute;mina"><span>N&oacute;mina</span></label><label class="opt"><input type="checkbox" name="interes" value="Contrataci&oacute;n"><span>Contrataci&oacute;n</span></label><label class="opt"><input type="checkbox" name="interes" value="Gesti&oacute;n documental"><span>Gesti&oacute;n documental</span></label><label class="opt"><input type="checkbox" name="interes" value="Plataforma completa"><span>Plataforma completa</span></label></div>
+          <p class="stp-sub">&iquest;Cu&aacute;ndo planea implementar?</p>
+          <div class="opts" data-required="plazo"><label class="opt"><input type="radio" name="plazo" value="Este a&ntilde;o"><span>Este a&ntilde;o</span></label><label class="opt"><input type="radio" name="plazo" value="En los pr&oacute;ximos 6 meses"><span>En los pr&oacute;ximos 6 meses</span></label><label class="opt"><input type="radio" name="plazo" value="El pr&oacute;ximo a&ntilde;o"><span>El pr&oacute;ximo a&ntilde;o</span></label><label class="opt"><input type="radio" name="plazo" value="Solo estoy explorando"><span>Solo estoy explorando</span></label></div>
+          <p class="stp-sub">&iquest;Qu&eacute; sistema usa hoy? <span>(opcional)</span></p>
+          <div class="opts"><label class="opt"><input type="radio" name="sistema" value="Ninguno / Excel"><span>Ninguno / Excel</span></label><label class="opt"><input type="radio" name="sistema" value="Otro software"><span>Otro software</span></label><label class="opt"><input type="radio" name="sistema" value="SIIFWEB versi&oacute;n anterior"><span>SIIFWEB versi&oacute;n anterior</span></label></div>
+        </fieldset>
+
+        <fieldset class="stp" data-step="3" data-name="Sus datos" hidden>
+          <legend class="stp-q">&iquest;A qui&eacute;n contactamos?</legend>
+          <div class="cta-form-grid">
+            <div class="cta-field">
+              <label class="cta-label" for="cta-nombre">Nombre *</label>
+              <input class="cta-input" id="cta-nombre" name="nombre" type="text" autocomplete="name" placeholder="Su nombre completo" required>
+            </div>
+            <div class="cta-field">
+              <label class="cta-label" for="cta-cargo">Cargo</label>
+              <input class="cta-input" id="cta-cargo" name="cargo" type="text" autocomplete="organization-title" placeholder="Ej. Secretario de Hacienda">
+            </div>
+            <div class="cta-field">
+              <label class="cta-label" for="cta-correo">Correo *</label>
+              <input class="cta-input" id="cta-correo" name="correo" type="email" autocomplete="email" placeholder="correo@entidad.gov.co" required>
+            </div>
+            <div class="cta-field">
+              <label class="cta-label" for="cta-telefono">Tel&eacute;fono</label>
+              <input class="cta-input" id="cta-telefono" name="telefono" type="tel" autocomplete="tel" placeholder="300 000 0000">
+            </div>
+            <div class="cta-field cta-field--full">
+              <label class="cta-label" for="cta-mensaje">&iquest;Algo m&aacute;s que debamos saber? <span class="cta-opt">(opcional)</span></label>
+              <textarea class="cta-textarea" id="cta-mensaje" name="mensaje" rows="2" placeholder="Ej. procesos que quiere mejorar"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <p class="stp-err" role="alert" hidden>Complete lo marcado para continuar.</p>
+        <div class="stp-nav">
+          <button type="button" class="stp-back" hidden>Atr&aacute;s</button>
+          <button type="button" class="btn stp-next">Continuar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="submit" class="btn cta-submit" hidden>Solicitar mi demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <p class="cta-note cta-note--final">Sus datos se tratan seg&uacute;n nuestra <a href="./politica-privacidad.html">pol&iacute;tica de privacidad</a>.</p>
         <p class="cta-error" role="alert" hidden>No pudimos enviar su solicitud. Intente de nuevo o <a class="cta-error-wa" href="https://wa.me/573163534433" target="_blank" rel="noreferrer">escr&iacute;banos por WhatsApp</a>.</p>
         <div class="cta-done" hidden role="status">
           <span class="cta-done-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
