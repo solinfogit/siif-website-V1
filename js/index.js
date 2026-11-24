@@ -189,7 +189,12 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
       submit.innerHTML = submitHtml;
     }
   });
-  form.querySelector('.cta-again').addEventListener('click', () => {
+  // Confirmación: editar (conserva los datos) o cerrar (limpia el formulario)
+  form.querySelector('.cta-edit').addEventListener('click', () => {
+    done.hidden = true;
+    form.elements.nombre.focus();
+  });
+  form.querySelector('.cta-close').addEventListener('click', () => {
     form.reset();
     done.hidden = true;
   });

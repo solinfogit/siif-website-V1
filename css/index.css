@@ -476,7 +476,16 @@
 .cta-done-ico svg { width: 30px; height: 30px }
 .cta-done h3 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: var(--ink) }
 .cta-done p { color: var(--ink-mid); max-width: 34ch; font-size: .95rem }
-.cta-done-wa { display: inline-flex; align-items: center; gap: .5rem; margin-top: .9rem; font-family: 'Montserrat', sans-serif; font-size: .92rem; font-weight: 600; color: #fff; background: #25D366; padding: .75rem 1.4rem; border-radius: 999px; box-shadow: 0 6px 16px rgba(37,211,102,.3); transition: transform .2s var(--ease), background .2s }
+.cta-shell { overflow: clip }
+.cta-copy, .cta-form { overflow: clip }
+.cta-done-acts { display: flex; flex-direction: column; align-items: center; gap: .9rem; margin-top: 1rem; width: 100%; max-width: 340px }
+.cta-done-sec { display: flex; gap: .6rem; width: 100% }
+.cta-edit, .cta-close { flex: 1; font: inherit; font-family: 'Montserrat', sans-serif; font-size: .88rem; font-weight: 600; padding: .7rem 1rem; border-radius: 999px; cursor: pointer; transition: background .2s, border-color .2s }
+.cta-edit { background: #fff; color: var(--blue); border: 1px solid rgba(18,100,168,.3) }
+.cta-edit:hover { background: var(--blue-soft); border-color: var(--blue) }
+.cta-close { background: #F1F5F9; color: var(--ink-mid); border: 1px solid transparent }
+.cta-close:hover { background: #E6EDF4; color: var(--ink) }
+.cta-done-wa { width: 100%; justify-content: center; display: inline-flex; align-items: center; gap: .5rem; font-family: 'Montserrat', sans-serif; font-size: .92rem; font-weight: 600; color: #fff; background: #25D366; padding: .75rem 1.4rem; border-radius: 999px; box-shadow: 0 6px 16px rgba(37,211,102,.3); transition: transform .2s var(--ease), background .2s }
 .cta-done-wa:hover { background: #1EBE5A; transform: translateY(-2px) }
 .cta-error { margin-top: .9rem; text-align: center; font-size: .85rem; color: #B42318; background: #FEF3F2; border: 1px solid #FECDCA; border-radius: 12px; padding: .7rem 1rem }
 .cta-error a { color: inherit; font-weight: 600; text-decoration: underline }
