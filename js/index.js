@@ -115,12 +115,16 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
   function dec0(el) { return +(el.dataset.dec || 0) ? parseFloat(el.dataset.count) - 9 : 0; }
 }());
 
-/* ── Formulario de demo → WhatsApp ── */
+/* ── Formulario de demo → WhatsApp + HubSpot ── */
 (function () {
   const form = document.getElementById('demo-form');
   if (!form) return;
   const done = form.querySelector('.cta-done');
-  const WA = '573232268844';
+  const WA = '573163534433';               // WhatsApp comercial (Juan Valentín)
+  const HUBSPOT = {
+    portalId: '51079095',
+    formId: ''                              // GUID del formulario en HubSpot; vacío = no se envía
+  };
   form.addEventListener('input', e => e.target.classList && e.target.classList.remove('err'));
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -143,8 +147,33 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
     if (v('telefono')) lines.push('*Teléfono:* ' + v('telefono'));
     if (intereses.length) lines.push('*Me interesa:* ' + intereses.join(', '));
     if (v('mensaje')) lines.push('', v('mensaje'));
+    // WhatsApp se abre primero (dentro del clic, para que el navegador no lo bloquee)
     window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
     done.hidden = false;
+
+    // HubSpot: crea/actualiza el contacto aunque la persona no envíe el WhatsApp
+    if (HUBSPOT.formId) {
+      const nota = [
+        v('tipo') && 'Tipo de entidad: ' + v('tipo'),
+        intereses.length && 'Le interesa: ' + intereses.join(', '),
+        v('mensaje') && 'Mensaje: ' + v('mensaje')
+      ].filter(Boolean).join('\n');
+      const field = (name, value) => ({ objectTypeId: '0-1', name, value });
+      const fields = [
+        field('firstname', v('nombre')),
+        field('email', v('correo')),
+        field('company', v('entidad'))
+      ];
+      if (v('cargo')) fields.push(field('jobtitle', v('cargo')));
+      if (v('telefono')) fields.push(field('phone', v('telefono')));
+      if (nota) fields.push(field('message', nota));
+      fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + HUBSPOT.portalId + '/' + HUBSPOT.formId, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        keepalive: true,
+        body: JSON.stringify({ fields, context: { pageUri: location.href, pageName: document.title } })
+      }).catch(() => {});
+    }
   });
   form.querySelector('.cta-again').addEventListener('click', () => { done.hidden = true; });
 }());
