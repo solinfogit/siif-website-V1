@@ -35,7 +35,7 @@ const ENTIDADES = [
     departamento: "Risaralda",
     municipio: "Pereira",
     url: "https://apx-solinfo.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=900293512",
-    urlProcesos: "https://solinfo.synchrox.com/",
+    urlProcesos: "https://new.solinfo.synchrox.com/",
     estado: "activo"
   },
   {
