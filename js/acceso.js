@@ -16,7 +16,10 @@
   /* Iniciales para el avatar: dos letras significativas del nombre */
   const STOP = new Set(['de', 'del', 'la', 'las', 'los', 'el', 'y', 'e']);
   function initials(nombre) {
-    const words = nombre.split(/\s+/).filter(w => w && !STOP.has(norm(w)));
+    // Si el nombre trae sigla entre paréntesis, p. ej. "(AMCO)", se usa la sigla
+    const sigla = nombre.match(/\(([A-Za-zÁÉÍÓÚÑ]{2,})\)/);
+    if (sigla) return sigla[1].slice(0, 2).toUpperCase();
+    const words = nombre.replace(/\(.*?\)/g, ' ').split(/[\s—–-]+/).filter(w => /[A-Za-zÁÉÍÓÚÑáéíóúñ]/.test(w) && !STOP.has(norm(w)));
     if (!words.length) return '?';
     if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
     return (words[0][0] + words[words.length - 1][0]).toUpperCase();
