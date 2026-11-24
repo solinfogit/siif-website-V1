@@ -1,4 +1,4 @@
-/* ── Directorio Acceso Nuevo: buscador, filtro y render ── */
+/* ── Directorio Acceso aplicativo: buscador, filtro y render ── */
 (function () {
   const $search = document.getElementById('acc-search');
   const $dep    = document.getElementById('acc-dep');

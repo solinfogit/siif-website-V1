@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   DIRECTORIO DE ENTIDADES — ACCESO NUEVO
+   DIRECTORIO DE ENTIDADES — ACCESO APLICATIVO
    Entidades que ya operan en la plataforma actualizada de SIIFWEB.
 
    Para agregar una entidad, copie un bloque y ajuste los campos:
@@ -43,6 +43,42 @@ const ENTIDADES = [
     municipio: "Santa Marta",
     url: "https://apx-santamarta.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891780009",
     urlProcesos: "https://santamarta.siifweb.com/",
+    estado: "activo"
+  },
+  {
+    // TODO: URLs temporales (UCEVA) — reemplazar por las de la entidad
+    nombre: "Empresa de Aseo de Pereira",
+    departamento: "Risaralda",
+    municipio: "Pereira",
+    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
+    urlProcesos: "https://servicio.siifweb.com/",
+    estado: "activo"
+  },
+  {
+    // TODO: URLs temporales (UCEVA) — reemplazar por las de la entidad
+    nombre: "Área Metropolitana Centro Occidente",
+    departamento: "Risaralda",
+    municipio: "Pereira",
+    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
+    urlProcesos: "https://servicio.siifweb.com/",
+    estado: "activo"
+  },
+  {
+    // TODO: URLs temporales (UCEVA) — reemplazar por las de la entidad
+    nombre: "Parque Temático Ukumarí",
+    departamento: "Risaralda",
+    municipio: "Pereira",
+    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
+    urlProcesos: "https://servicio.siifweb.com/",
+    estado: "activo"
+  },
+  {
+    // TODO: URLs temporales (UCEVA) — reemplazar por las de la entidad
+    nombre: "Beneficencia del Valle — Lotería del Valle",
+    departamento: "Valle del Cauca",
+    municipio: "Cali",
+    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=891900853",
+    urlProcesos: "https://servicio.siifweb.com/",
     estado: "activo"
   }
 ];
