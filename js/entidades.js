@@ -18,9 +18,9 @@
      Si también `urlProcesos` está vacía, la tarjeta completa queda en
      "Próximamente".
    - Nomenclatura de URLs de SIIFWEB+ (APEX), decidida en nov. 2026:
-       · Servidor compartido 1 .............. app1.siifweb.com    (hoy apx-servicio)
-       · Servidor compartido 2 .............. app2.siifweb.com    (hoy servicio-oci / Soledad)
-       · Cliente con instalación propia ..... app-{cliente}.siifweb.com
+       · Servidor compartido A .............. app-swa.siifweb.com (hoy apx-servicio)
+       · Servidor compartido B .............. app-swb.siifweb.com (hoy app-oci / Soledad)
+       · Cliente con instalación propia ..... app-{cliente}.siifweb.com (nunca swa, swb ni oci)
        · Synchrox de cliente propio ......... {cliente}.siifweb.com
      En los compartidos la entidad se elige con ?p9999_nit_compania={NIT}.
      Mientras esos nombres no existan en el DNS se siguen usando los actuales.
