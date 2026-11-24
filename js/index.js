@@ -276,5 +276,28 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
     show(0, 'back');
   });
 
+  // Llegada desde la ficha de un módulo: ./?modulo=Presupuesto#contacto
+  const pedido = new URLSearchParams(location.search).get('modulo');
+  if (pedido) {
+    const n = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const op = [...form.querySelectorAll('input[name="interes"]')].find(i => n(pedido).includes(n(i.value)) || n(i.value).includes(n(pedido)));
+    if (op) op.checked = true;
+    form.elements.mensaje.value = 'Me interesa el módulo ' + pedido + '.';
+  }
+
+  // Llevar al formulario (no al panel azul) cuando viene de una ficha o en pantallas angostas
+  const goForm = smooth => window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 84, behavior: smooth ? 'smooth' : 'auto' });
+  if (location.hash === '#contacto' && (pedido || window.innerWidth <= 860)) {
+    window.addEventListener('load', () => setTimeout(() => goForm(false), 50));
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href="#contacto"], a[href="./#contacto"]');
+    if (a && window.innerWidth <= 860 && document.getElementById('contacto')) {
+      e.preventDefault();
+      history.replaceState(null, '', '#contacto');
+      goForm(true);
+    }
+  });
+
   show(0);
 }());

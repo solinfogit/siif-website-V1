@@ -240,3 +240,45 @@ body { background: #F6F9FC }
   .sec-visual { max-width: 420px }
 }
 @media (prefers-reduced-motion: reduce) { .il-chip { animation: none } }
+
+/* ═══ Ficha de módulo ═══ */
+.card { cursor: pointer; position: relative }
+.card:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--acc, var(--blue)) }
+.card-more { display: inline-flex; align-items: center; gap: .35rem; margin-top: auto; padding-top: .3rem; font-family: 'Montserrat', sans-serif; font-size: .8rem; font-weight: 600; color: var(--acc, var(--blue)); opacity: .75; transition: opacity .2s, gap .2s }
+.card:hover .card-more, .card:focus-visible .card-more { opacity: 1; gap: .55rem }
+
+html.ficha-open { overflow: hidden }
+.ficha { position: fixed; inset: 0; z-index: 900 }
+.ficha-bg { position: absolute; inset: 0; background: rgba(11,22,34,.42); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); opacity: 0; transition: opacity .25s }
+.ficha-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(520px, 100%); background: #fff; box-shadow: -20px 0 60px rgba(11,33,56,.2); overflow-y: auto; transform: translateX(100%); transition: transform .35s var(--ease); outline: none }
+.ficha.in .ficha-bg { opacity: 1 }
+.ficha.in .ficha-panel { transform: none }
+.ficha-x { position: sticky; top: 14px; float: right; margin: 14px 14px 0 0; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: none; background: #F1F5F9; color: var(--ink-mid); display: grid; place-items: center; cursor: pointer; transition: background .2s }
+.ficha-x:hover { background: #E6EDF4; color: var(--ink) }
+.ficha-body { padding: 2rem 2rem 2.4rem; clear: both }
+.ficha-head { display: flex; align-items: center; gap: 1rem; margin-top: -1.2rem; margin-bottom: 1.1rem; padding-right: 2.5rem }
+.ficha-ico { width: 56px; height: 56px; border-radius: 18px; flex-shrink: 0; display: grid; place-items: center; background: var(--tint); color: var(--acc) }
+.ficha-ico svg { width: 28px; height: 28px; stroke: currentColor }
+.ficha-sub { font-family: 'Montserrat', sans-serif; font-size: .78rem; font-weight: 700; color: var(--acc) }
+.ficha-sub:hover { text-decoration: underline }
+.ficha-head h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 700; letter-spacing: -.025em; line-height: 1.15; color: var(--ink) }
+.ficha-desc { font-size: 1rem; line-height: 1.75; color: var(--ink-mid) }
+.ficha-visual { margin: 1.4rem 0 .4rem; padding: 1rem 1rem .2rem; border-radius: 22px; background: linear-gradient(135deg, var(--tint), #fff 90%) }
+.ficha-acts { display: flex; flex-direction: column; gap: .6rem; margin-top: 1.2rem }
+.ficha-demo, .ficha-wa { display: flex; justify-content: center; align-items: center; gap: .5rem; font-family: 'Montserrat', sans-serif; font-size: .95rem; font-weight: 600; padding: .95rem 1.2rem; border-radius: 999px; transition: transform .2s var(--ease), background .2s }
+.ficha-demo { background: var(--acc); color: #fff; box-shadow: 0 8px 20px color-mix(in srgb, var(--acc) 35%, transparent) }
+.ficha-demo:hover { transform: translateY(-2px) }
+.ficha-wa { color: #128C4A; background: #E9F8EF }
+.ficha-wa:hover { background: #D9F2E3 }
+.ficha-rel { margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--line) }
+.ficha-rel h3 { font-family: 'Montserrat', sans-serif; font-size: .9rem; font-weight: 700; color: var(--ink); margin-bottom: .8rem }
+.ficha-chips { display: flex; flex-wrap: wrap; gap: .5rem }
+.ficha-chips button { font: inherit; font-size: .82rem; font-weight: 600; color: var(--ink-mid); background: #F6F9FC; border: 1px solid #DDE6EF; border-radius: 999px; padding: .45rem .9rem; cursor: pointer; transition: all .2s }
+.ficha-chips button:hover { border-color: var(--acc); color: var(--acc); background: #fff }
+.ficha-note { margin-top: 1.4rem; font-size: .82rem; color: var(--ink-dim); line-height: 1.6 }
+@media (max-width: 600px) {
+  .ficha-panel { top: auto; left: 0; width: 100%; max-height: 90vh; border-radius: 24px 24px 0 0; transform: translateY(100%) }
+  .ficha-body { padding: 1.6rem 1.3rem 2rem }
+  .ficha-head h2 { font-size: 1.35rem }
+}
+@media (prefers-reduced-motion: reduce) { .ficha-panel, .ficha-bg { transition: none } }

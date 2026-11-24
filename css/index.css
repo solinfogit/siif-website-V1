@@ -532,3 +532,6 @@
 @media (max-width: 860px) { .cta-inner { grid-template-columns: 1fr } }
 @media (max-width: 520px) { .cta-form-grid { grid-template-columns: 1fr } }
 
+
+/* Al saltar a #contacto (menú "Solicitar demo" o ficha de módulo) la tarjeta queda a la vista */
+#contacto { scroll-margin-top: calc(84px - clamp(5rem, 10vw, 8.5rem)) }

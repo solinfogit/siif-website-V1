@@ -183,6 +183,10 @@ function moduleIconSvg(name, groupId) {
   return moduleIconMap[key] || iconSvg(name, groupId);
 }
 
+/* ── Utilidades para la ficha ── */
+function plainText(html) { const t = document.createElement('textarea'); t.innerHTML = html; return t.value; }
+function slug(html) { return plainText(html).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
+
 /* ── Render page ── */
 const sideNav = document.getElementById('side-nav');
 const sections = document.getElementById('sections');
@@ -256,12 +260,13 @@ modulesData.forEach((group, gi) => {
   section.style.setProperty('--tint', tint);
 
   const cards = group.modules.map(module => `
-    <article class="card">
+    <article class="card" tabindex="0" role="button" data-mod="${slug(module.name)}" aria-label="Ver ficha de ${plainText(module.name)}">
       <div class="card-top">
         <div class="icon" aria-hidden="true">${moduleIconSvg(module.name, group.id)}</div>
         <div><h3>${module.name}</h3></div>
       </div>
       <p>${module.description}</p>
+      <span class="card-more">Ver ficha <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </article>
   `).join('');
 
@@ -398,4 +403,96 @@ if (accessBtn) {
     lastActive = null;
     updateActive();
   });
+}());
+
+/* ── Ficha de módulo ── */
+(function () {
+  const WA = '573163534433';
+  const index = [];
+  modulesData.forEach((g, gi) => g.modules.forEach(m => index.push({ g, gi, m, id: slug(m.name) })));
+
+  const sheet = document.createElement('div');
+  sheet.className = 'ficha';
+  sheet.hidden = true;
+  sheet.innerHTML = `
+    <div class="ficha-bg" data-close></div>
+    <aside class="ficha-panel" role="dialog" aria-modal="true" aria-labelledby="ficha-title" tabindex="-1">
+      <button class="ficha-x" type="button" data-close aria-label="Cerrar ficha"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <div class="ficha-body"></div>
+    </aside>`;
+  document.body.appendChild(sheet);
+  const body = sheet.querySelector('.ficha-body');
+  const panel = sheet.querySelector('.ficha-panel');
+  let lastFocus = null;
+
+  function render(item) {
+    const { g, gi, m } = item;
+    const [acc, tint] = PALETTE[gi % PALETTE.length];
+    panel.style.setProperty('--acc', acc);
+    panel.style.setProperty('--tint', tint);
+    const name = plainText(m.name);
+    const related = g.modules.filter(x => x !== m);
+    const waText = encodeURIComponent('Hola, quiero información del módulo ' + name + ' (' + plainText(g.title) + ') de SIIFWEB.');
+    body.innerHTML = `
+      <div class="ficha-head">
+        <span class="ficha-ico" aria-hidden="true">${moduleIconSvg(m.name, g.id)}</span>
+        <div>
+          <a class="ficha-sub" href="#${g.id}" data-close>${g.title}</a>
+          <h2 id="ficha-title">${m.name}</h2>
+        </div>
+      </div>
+      <p class="ficha-desc">${m.description}</p>
+      <div class="ficha-visual" aria-hidden="true">${ILLUS[g.id] || ''}</div>
+      <div class="ficha-acts">
+        <a class="ficha-demo" href="./?modulo=${encodeURIComponent(name)}#contacto">Solicitar una demo de este m&oacute;dulo</a>
+        <a class="ficha-wa" href="https://wa.me/${WA}?text=${waText}" target="_blank" rel="noreferrer">Preguntar por WhatsApp</a>
+      </div>
+      ${related.length ? `<div class="ficha-rel"><h3>Otros m&oacute;dulos de ${g.title}</h3><div class="ficha-chips">${related.map(x => `<button type="button" data-open="${slug(x.name)}">${x.name}</button>`).join('')}</div></div>` : ''}
+      <p class="ficha-note">Todos los m&oacute;dulos comparten la misma base de datos: lo que registra uno lo ven los dem&aacute;s, sin dobles digitaciones.</p>`;
+  }
+
+  function open(id, push) {
+    const item = index.find(x => x.id === id);
+    if (!item) return;
+    if (sheet.hidden) lastFocus = document.activeElement;
+    render(item);
+    sheet.hidden = false;
+    document.documentElement.classList.add('ficha-open');
+    requestAnimationFrame(() => sheet.classList.add('in'));
+    panel.scrollTop = 0;
+    panel.focus({ preventScroll: true });
+    if (push !== false) history.replaceState(null, '', '#modulo/' + id);
+  }
+  function close() {
+    if (sheet.hidden) return;
+    sheet.classList.remove('in');
+    document.documentElement.classList.remove('ficha-open');
+    setTimeout(() => { sheet.hidden = true; }, 250);
+    if (location.hash.startsWith('#modulo/')) history.replaceState(null, '', location.pathname + location.search);
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  }
+
+  document.addEventListener('click', e => {
+    const card = e.target.closest('.card[data-mod]');
+    if (card) { open(card.dataset.mod); return; }
+    const rel = e.target.closest('[data-open]');
+    if (rel) { open(rel.dataset.open); return; }
+    if (e.target.closest('[data-close]')) close();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') close();
+    const card = e.target.closest && e.target.closest('.card[data-mod]');
+    if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); open(card.dataset.mod); }
+    // Mantener el foco dentro de la ficha
+    if (e.key === 'Tab' && !sheet.hidden) {
+      const f = [...panel.querySelectorAll('a,button')];
+      if (!f.length) return;
+      if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    }
+  });
+
+  // Enlace directo: modulos.html#modulo/presupuesto
+  const m = location.hash.match(/^#modulo\/(.+)$/);
+  if (m) open(decodeURIComponent(m[1]), false);
 }());
