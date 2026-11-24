@@ -154,6 +154,7 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
     // HubSpot: crea/actualiza el contacto aunque la persona no envíe el WhatsApp
     if (HUBSPOT.formId) {
       const nota = [
+        'Entidad: ' + v('entidad'),
         v('tipo') && 'Tipo de entidad: ' + v('tipo'),
         intereses.length && 'Le interesa: ' + intereses.join(', '),
         v('mensaje') && 'Mensaje: ' + v('mensaje')
