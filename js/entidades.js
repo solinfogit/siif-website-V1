@@ -71,11 +71,10 @@ const ENTIDADES = [
     estado: "activo"
   },
   {
-    // TODO: falta confirmar el NIT para el enlace SIIFWEB+
     nombre: "Beneficencia del Valle — Lotería del Valle",
     departamento: "Valle del Cauca",
     municipio: "Cali",
-    url: "",
+    url: "https://apx-servicio.siifweb.com/ords/r/siifweb/siif-main/login?p9999_nit_compania=890399027",
     urlProcesos: "https://new.servicio.siifweb.com/",
     estado: "activo"
   }
