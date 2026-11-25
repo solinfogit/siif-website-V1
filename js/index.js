@@ -130,7 +130,7 @@ document.querySelectorAll('.sr').forEach(el => io.observe(el));
   const bar = form.querySelector('.stp-bar i');
   const count = form.querySelector('.stp-count b');
   const name = form.querySelector('.stp-name');
-  const WA = '573163534433';               // WhatsApp comercial (Juan Valentín)
+  const WA = '573163534433';               // WhatsApp comercial
   const HUBSPOT = {
     portalId: '51079095',
     formId: 'bfe70095-cdab-497f-934e-d5dab1a05797'

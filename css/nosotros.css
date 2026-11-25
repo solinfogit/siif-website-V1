@@ -545,6 +545,9 @@
 
 /* Sedes */
 .loc-card { border-radius: var(--radius-card) }
+.locs-grid { align-items: stretch }
+.loc-card { display: flex; flex-direction: column }
+.loc-card .loc-actions { margin-top: auto; padding-top: 1.25rem }
 .loc-link { border-radius: 999px }
 
 /* CTA final: tarjeta como en el inicio */
