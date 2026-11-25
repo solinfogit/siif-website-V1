@@ -51,11 +51,15 @@
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 750;
+  pointer-events: none; /* la caja del panel cerrado no debe tapar la página */
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-end;
   gap: .85rem;
 }
+
+/* Solo el botón y el panel abierto reciben clics */
+#siif-chat-btn { pointer-events: auto }
 
 /* Floating button */
 #siif-chat-btn {

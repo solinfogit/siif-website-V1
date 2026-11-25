@@ -1,0 +1,91 @@
+/* ═══════════════════════════════════════════════════════════════════
+   THEME — estándar visual compartido (estilo producto / Workspace)
+   Se carga de último en todas las páginas: unifica menú, etiquetas,
+   botones, títulos, tarjetas y el hero claro de las páginas internas.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --teal: #0F9D8A;
+  --grad: linear-gradient(90deg, #1264A8 0%, #1E88D9 45%, #0F9D8A 100%);
+  --radius-card: 24px;
+  --card-border: 1px solid rgba(18,100,168,.09);
+  --card-shadow-hover: 0 24px 60px rgba(11,33,56,.10);
+}
+
+/* ── Menú ── */
+#nav, #nav.scrolled { background: rgba(255,255,255,.92); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); box-shadow: 0 1px 0 rgba(18,100,168,.08) }
+#nav.scrolled { box-shadow: 0 1px 0 rgba(18,100,168,.08), 0 8px 24px rgba(11,33,56,.06) }
+.nav-inner { max-width: 1240px; gap: 1.5rem }
+#nav .nav-logo img { filter: none }
+.nav-links { gap: .35rem; margin-left: auto }
+#nav .nav-links a { font-size: .9rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--ink-mid); padding: .5rem .9rem; border-radius: 999px; transition: color .2s, background .2s }
+#nav .nav-links a:hover { color: var(--ink); background: #F1F5FA }
+#nav .nav-links a.active { color: var(--blue) !important; background: var(--blue-soft); margin: 0; padding: .5rem .9rem; border-radius: 999px }
+#nav .nav-access { font-size: .88rem; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--blue); border: 1px solid rgba(18,100,168,.28); padding: .55rem 1rem .55rem 1.15rem; border-radius: 999px }
+#nav .nav-access:hover { background: var(--blue-soft); border-color: var(--blue) }
+.nav-demo { flex-shrink: 0; display: inline-flex; align-items: center; font-family: 'Montserrat', sans-serif; font-size: .88rem; font-weight: 600; color: #fff; background: var(--blue); padding: .6rem 1.2rem; border-radius: 999px; box-shadow: 0 4px 12px rgba(18,100,168,.25); transition: background .2s, transform .2s var(--ease), box-shadow .2s }
+.nav-demo:hover { background: var(--blue-deep); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(18,100,168,.3) }
+#nav .nav-toggle span { background: var(--ink-mid) }
+.access-menu { border-radius: 18px }
+
+@media (max-width: 860px) {
+  .nav-links { margin-left: 0 }
+  .nav-demo { margin-left: auto; padding: .5rem 1rem; font-size: .82rem }
+  .nav-toggle { margin-left: .5rem !important }
+  #nav .nav-links { background: #fff; border-top: 1px solid rgba(18,100,168,.08) }
+  #nav .nav-links a { border-radius: 0; padding: .85rem var(--page-pad); font-size: .95rem }
+  #nav .nav-links a.active { border-radius: 0; border-left: 3px solid var(--blue); padding-left: calc(var(--page-pad) - 3px); background: var(--blue-soft) }
+  #nav .nav-links-sep { background: rgba(0,0,0,.07) }
+  #nav .nav-mob-access > a, #nav .nav-mob-access > span { color: var(--ink-mid); text-transform: none; letter-spacing: 0; font-size: .9rem; font-weight: 500 }
+  #nav .nav-mob-access a:hover { color: var(--blue) }
+  #nav .nav-mob-access .access-new, #nav .nav-mob-access .access-soon { display: inline-flex; padding: .2rem .5rem; font-size: .56rem; font-weight: 700; letter-spacing: .07em; color: #fff; opacity: 1 }
+  #nav .nav-mob-disabled span { color: var(--ink-dim) }
+}
+@media (max-width: 400px) { .nav-demo { display: none } .nav-toggle { margin-left: auto !important } }
+
+/* ── Etiquetas, botones y títulos ── */
+.tag { font-size: .8rem; font-weight: 600; letter-spacing: 0; text-transform: none; padding: .36rem .95rem; border-radius: 999px }
+.tag-blue { background: var(--blue-soft); color: var(--blue); border: 1px solid rgba(18,100,168,.14) }
+.btn { font-size: .92rem; font-weight: 600; letter-spacing: 0; text-transform: none; padding: .9rem 1.8rem; border-radius: 999px }
+.sec-title { font-weight: 700; letter-spacing: -.03em; line-height: 1.1 }
+h1, h2, h3, h4 { letter-spacing: -.02em }
+
+/* ── Hero claro de páginas internas ── */
+.page-hero { position: relative; overflow: hidden; background: #fff; padding: calc(64px + clamp(3.5rem, 8vw, 6rem)) var(--page-pad) clamp(3rem, 7vw, 5rem) }
+.page-hero-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden }
+.page-hero-bg::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(18,100,168,.10) 1px, transparent 1px); background-size: 22px 22px; -webkit-mask-image: radial-gradient(ellipse 55% 70% at 70% 40%, #000 0%, transparent 75%); mask-image: radial-gradient(ellipse 55% 70% at 70% 40%, #000 0%, transparent 75%) }
+.page-hero-bg i { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; animation: phblob 18s ease-in-out infinite alternate }
+.page-hero-bg i:nth-child(1) { width: 480px; height: 480px; background: #CFE3F7; top: -160px; right: 6% }
+.page-hero-bg i:nth-child(2) { width: 340px; height: 340px; background: #D6F2EC; bottom: -140px; right: 34%; animation-delay: -6s }
+.page-hero-bg i:nth-child(3) { width: 280px; height: 280px; background: #FCEBD0; top: 20%; right: -80px; animation-delay: -12s }
+@keyframes phblob { to { transform: translate(-40px, 30px) scale(1.08) } }
+.page-hero-inner { position: relative; z-index: 1; max-width: var(--site-max); margin: 0 auto }
+.page-eyebrow { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Montserrat', sans-serif; font-size: .8rem; font-weight: 600; color: var(--blue); background: var(--blue-soft); border: 1px solid rgba(18,100,168,.14); padding: .38rem .95rem; border-radius: 999px; margin-bottom: 1.5rem }
+.page-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: #16A34A; box-shadow: 0 0 0 4px rgba(22,163,74,.16) }
+.page-hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 700; color: var(--ink); line-height: 1.06; letter-spacing: -.035em; margin: 0 0 1.2rem }
+.page-hero h1 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent }
+.page-hero-sub { font-size: clamp(1rem, 1.25vw, 1.12rem); color: var(--ink-mid); line-height: 1.7; max-width: 52ch }
+.page-hero-sub strong { color: var(--ink); font-weight: 600 }
+.page-hero-inner > * { animation: phrise .8s var(--ease) both }
+.page-hero-inner > :nth-child(2) { animation-delay: .08s }
+.page-hero-inner > :nth-child(3) { animation-delay: .16s }
+.page-hero-inner > :nth-child(4) { animation-delay: .24s }
+@keyframes phrise { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+.page-hero--center .page-hero-inner { text-align: center; display: flex; flex-direction: column; align-items: center }
+.page-hero--center .page-hero-sub { margin: 0 auto }
+@media (prefers-reduced-motion: reduce) { .page-hero-bg i, .page-hero-inner > * { animation: none } }
+[hidden] { display: none !important }
+
+/* ── Pie de página: marca azul ── */
+.footer-icon { display: inline-block; width: 34px; height: 32px; overflow: hidden; opacity: .9; flex-shrink: 0 }
+.footer-icon img { height: 32px; width: auto; max-width: none }
+
+/* ── Marca SIIFWEB+ (plataforma nueva) ── */
+.plus-chip { display: inline-grid; place-items: center; width: 1.3em; height: 1.3em; margin-left: .12em; padding: 0; font-family: 'Montserrat', sans-serif; font-size: .78em; font-weight: 800; line-height: 1; color: #fff; border-radius: .38em; background: linear-gradient(135deg, #1E88D9 0%, #0F9D8A 100%); box-shadow: 0 2px 6px rgba(15,157,138,.35); vertical-align: middle; transition: background .2s, color .2s, box-shadow .2s }
+.acc-enter .plus-chip { font-size: .9em; margin-left: calc(-.4rem + .1em) }
+.acc-enter:hover .plus-chip { background: #fff; color: var(--blue); box-shadow: none }
+.brand-plus { display: inline-flex; align-items: center; gap: 0; font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--blue); white-space: nowrap }
+.access-item-desc .brand-plus { font-weight: 700 }
+.fl .plus-chip { color: #fff }
+#nav .nav-mob-access > a .brand-plus { margin-left: .35rem; padding: 0; font-size: .8rem; text-transform: none; letter-spacing: 0 }
+#nav .nav-mob-access .plus-chip { display: inline-grid; padding: 0; color: #fff }

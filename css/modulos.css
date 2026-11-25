@@ -7,66 +7,7 @@
   --page-pad: clamp(1.25rem, 3vw, 2.5rem);
 }
 
-body { background: linear-gradient(180deg, #F7FAFD 0%, #EDF4FA 100%) }
-
-/* ── Hero ── */
-.hero {
-  position: relative;
-  overflow: hidden;
-  padding-top: 64px;
-  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 48%, #2F86CE 100%);
-  color: var(--white);
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: auto auto -120px -80px;
-  width: 420px; height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,.18) 0%, rgba(255,255,255,0) 70%);
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  top: -120px; right: -40px;
-  width: 420px; height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 72%);
-}
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: var(--site-max);
-  margin: 0 auto;
-  padding: clamp(4rem,8vw,6rem) var(--page-pad) clamp(2.5rem,5vw,3.5rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .4rem .8rem;
-  border: 1px solid rgba(255,255,255,.22);
-  border-radius: 999px;
-  background: rgba(255,255,255,.08);
-  font-family: 'Montserrat', sans-serif;
-  font-size: .66rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-.hero h1 {
-  max-width: 13ch;
-  margin: 1rem 0 .85rem;
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(2.3rem, 5vw, 4.25rem);
-  line-height: 1.02;
-  letter-spacing: -.03em;
-}
-.hero p { max-width: 64ch; margin: 0 auto; color: rgba(255,255,255,.86); font-size: 1rem; line-height: 1.8 }
+body { background: #F6F9FC }
 
 /* ── Layout ── */
 .layout {
@@ -158,3 +99,186 @@ body { background: linear-gradient(180deg, #F7FAFD 0%, #EDF4FA 100%) }
   .cards { grid-template-columns: 1fr }
 }
 
+
+
+/* ═══ Estándar visual v2 ═══ */
+.page-hero { padding-bottom: clamp(2.5rem, 5vw, 3.5rem) }
+.page-hero h1 { max-width: 18ch }
+.mod-search { position: relative; display: flex; align-items: center; width: min(560px, 100%); margin: 2rem auto 0; color: var(--ink-dim) }
+.mod-search svg { position: absolute; left: 1.2rem; pointer-events: none }
+.mod-search input { width: 100%; height: 56px; padding: 0 1.4rem 0 3.1rem; border: 1px solid #D9E3EE; border-radius: 999px; background: #fff; font: inherit; font-size: 1rem; color: var(--ink); box-shadow: 0 10px 30px rgba(11,33,56,.08); outline: none; transition: border-color .2s, box-shadow .2s }
+.mod-search input:focus { border-color: var(--blue); box-shadow: 0 0 0 5px rgba(18,100,168,.12), 0 10px 30px rgba(11,33,56,.08) }
+.mod-search input::placeholder { color: #8CA0B4 }
+
+.layout { padding-top: 1rem; gap: 2rem }
+.sidebar { border-radius: 22px; border: 1px solid rgba(18,100,168,.09); box-shadow: 0 10px 30px rgba(11,33,56,.06); top: 84px }
+.sidebar-label { text-transform: none; letter-spacing: 0; font-size: .8rem; font-weight: 600 }
+.sidebar a { border-radius: 999px; padding: .6rem .9rem; font-weight: 500 }
+.sidebar a:hover, .sidebar a.active { font-weight: 600 }
+.sidebar a.active { background: var(--blue); color: #fff }
+
+.section { scroll-margin-top: 90px; padding-top: 2rem }
+.section h2 { font-weight: 700; letter-spacing: -.03em; display: flex; align-items: center; gap: .7rem }
+.section h2::before { content: ''; width: 12px; height: 12px; border-radius: 4px; background: var(--acc, var(--blue)); flex-shrink: 0 }
+.section-count { font-weight: 600; color: var(--acc, var(--blue)); background: var(--tint, var(--blue-soft)); border-color: transparent }
+.cards { gap: 1.1rem }
+.card { background: #fff; border: 1px solid rgba(18,100,168,.09); border-radius: 22px; padding: 1.4rem 1.4rem 1.5rem; min-height: 0; transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s }
+.card:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(11,33,56,.10); border-color: transparent }
+.icon { width: 46px; height: 46px; border-radius: 14px; background: var(--tint, var(--blue-soft)); color: var(--acc, var(--blue)); transition: background .3s, color .3s }
+.card:hover .icon { background: var(--acc, var(--blue)); color: #fff }
+.card h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -.015em }
+.card p { font-size: .9rem }
+.card mark { background: #FFF1C7; color: inherit; border-radius: 3px; padding: 0 2px }
+.mod-empty { grid-column: 2; text-align: center; padding: 3rem 1rem; color: var(--ink-mid); background: #fff; border: 1px dashed #D0DCE8; border-radius: 22px }
+.mod-empty a { color: var(--blue); font-weight: 600; text-decoration: underline; text-underline-offset: 3px }
+@media (max-width: 980px) {
+  .mod-empty { grid-column: auto }
+  .sidebar { padding: .6rem; position: sticky; top: 64px; z-index: 5; border-radius: 0 0 18px 18px; margin: 0 calc(var(--page-pad) * -1) }
+  .sidebar-label { display: none }
+  .sidebar nav { overflow-x: auto; scrollbar-width: none }
+}
+
+/* ═══ Módulos v3: mapa de subsistemas, banners e ilustraciones ═══ */
+/* Mapa de subsistemas */
+.subs { padding: 0 var(--page-pad) 1rem }
+.subs-in { max-width: var(--site-max); margin: 0 auto }
+.subs-hd { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem }
+.subs-hd h2 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; letter-spacing: -.02em; color: var(--ink) }
+.subs-hd p { font-size: .9rem; color: var(--ink-dim) }
+.subs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem }
+.sub-tile { display: flex; align-items: center; gap: .85rem; padding: .95rem 1rem; background: #fff; border: 1px solid rgba(18,100,168,.09); border-radius: 18px; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s }
+.sub-tile:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(11,33,56,.09); border-color: transparent }
+.sub-ico { width: 42px; height: 42px; flex-shrink: 0; border-radius: 13px; display: grid; place-items: center; background: var(--tint); color: var(--acc); transition: background .3s, color .3s }
+.sub-ico svg { width: 21px; height: 21px; stroke: currentColor }
+.sub-tile:hover .sub-ico { background: var(--acc); color: #fff }
+.sub-txt { flex: 1; min-width: 0 }
+.sub-txt b { display: block; font-family: 'Montserrat', sans-serif; font-size: .95rem; font-weight: 700; color: var(--ink); letter-spacing: -.01em }
+.sub-txt small { font-size: .78rem; color: var(--ink-dim) }
+.sub-go { color: var(--ink-dim); transition: transform .3s var(--ease), color .3s }
+.sub-tile:hover .sub-go { transform: translateX(3px); color: var(--acc) }
+
+/* Barra lateral con conteo y color */
+@media (min-width: 981px) { .layout { grid-template-columns: 250px minmax(0, 1fr) } }
+.sidebar nav a { display: flex; align-items: center; justify-content: space-between; gap: .6rem }
+.sidebar nav a em { font-style: normal; font-size: .72rem; font-weight: 700; min-width: 24px; height: 22px; padding: 0 .4rem; display: grid; place-items: center; border-radius: 999px; background: #F1F5F9; color: var(--ink-dim) }
+.sidebar nav a.active { background: var(--acc, var(--blue)) }
+.sidebar nav a.active em { background: rgba(255,255,255,.22); color: #fff }
+
+/* Banner de cada subsistema */
+.section { padding-top: 2.6rem }
+.sec-banner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); gap: 1.5rem; align-items: center; padding: 1.6rem 1.6rem 1.6rem 1.8rem; margin-bottom: 1.2rem; border-radius: 26px; background: linear-gradient(135deg, var(--tint) 0%, #fff 85%); border: 1px solid rgba(18,100,168,.07); overflow: hidden; position: relative }
+.sec-banner::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(11,33,56,.06) 1px, transparent 1px); background-size: 18px 18px; -webkit-mask-image: linear-gradient(90deg, transparent 40%, #000); mask-image: linear-gradient(90deg, transparent 40%, #000); pointer-events: none }
+.sec-copy { position: relative; z-index: 1 }
+.sec-kicker { font-family: 'Montserrat', sans-serif; font-size: .75rem; font-weight: 700; color: var(--acc); display: inline-flex; align-items: center; gap: .45rem; margin-bottom: .5rem }
+.sec-kicker::before { content: ''; width: 8px; height: 8px; border-radius: 3px; background: var(--acc) }
+.section .sec-banner h2 { font-size: clamp(1.6rem, 2.6vw, 2.2rem) }
+.section .sec-banner h2::before { display: none }
+.sec-meta { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; margin-top: 1.1rem }
+.sec-meta .section-count { background: #fff }
+.sec-demo { display: inline-flex; align-items: center; gap: .4rem; font-family: 'Montserrat', sans-serif; font-size: .85rem; font-weight: 600; color: var(--acc); padding: .55rem .9rem; border-radius: 999px; transition: background .2s }
+.sec-demo:hover { background: rgba(255,255,255,.7) }
+.sec-demo svg { transition: transform .2s var(--ease) }
+.sec-demo:hover svg { transform: translateX(3px) }
+.sec-visual { position: relative; z-index: 1 }
+
+/* Mini pantallas */
+.il { position: relative; padding: .4rem .4rem 1.4rem }
+.mw { background: #fff; border-radius: 16px; border: 1px solid rgba(18,100,168,.10); box-shadow: 0 22px 50px rgba(11,33,56,.12); overflow: hidden }
+.mw-bar { display: flex; align-items: center; gap: 5px; padding: 9px 12px; background: #FAFCFE; border-bottom: 1px solid #EEF3F8 }
+.mw-bar i { width: 8px; height: 8px; border-radius: 50%; background: #E3EAF2 }
+.mw-bar span { margin-left: 8px; font-size: .68rem; font-weight: 500; color: var(--ink-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.mw-body { padding: 14px 16px 16px; min-height: 150px; display: flex; flex-direction: column; gap: 10px }
+.mw b { font-family: 'Montserrat', sans-serif; color: var(--ink) }
+.mw small { display: block; font-size: .66rem; color: var(--ink-dim); line-height: 1.35 }
+.il-chip { position: absolute; right: -.2rem; bottom: 0; display: flex; align-items: center; gap: .55rem; background: #fff; border: 1px solid rgba(18,100,168,.10); border-radius: 12px; padding: .5rem .8rem .5rem .55rem; box-shadow: 0 12px 28px rgba(11,33,56,.13); white-space: nowrap; animation: ilFloat 6s ease-in-out infinite }
+.il-chip b { display: block; font-family: 'Montserrat', sans-serif; font-size: .74rem; color: var(--ink); line-height: 1.2 }
+.il-chip small { display: block; font-size: .64rem; color: var(--ink-dim) }
+.il-ok { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; background: #E3F6EC; color: #16A34A }
+.il-ok svg { width: 14px; height: 14px }
+@keyframes ilFloat { 0%,100% { translate: 0 0 } 50% { translate: 0 -6px } }
+.il-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
+.il-kpis div { background: #F6F9FC; border-radius: 9px; padding: 8px 10px }
+.il-kpis b { font-size: .95rem; color: var(--acc) }
+.il-bars { display: flex; align-items: flex-end; gap: 5px; height: 72px }
+.il-bars span { flex: 1; height: var(--h); border-radius: 4px 4px 2px 2px; background: linear-gradient(180deg, color-mix(in srgb, var(--acc) 65%, #fff), var(--acc)) }
+.il-steps { list-style: none; display: flex; flex-direction: column; gap: 9px; counter-reset: st }
+.il-steps li { position: relative; display: flex; align-items: center; gap: 10px; font-size: .78rem; color: var(--ink-dim); counter-increment: st }
+.il-steps li::before { content: counter(st); width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; font-size: .62rem; font-weight: 700; border: 2px solid #D5E0EB; color: var(--ink-dim); background: #fff }
+.il-steps li.d { color: var(--ink); font-weight: 600 }
+.il-steps li.d::before { content: '\2713'; background: var(--acc); border-color: var(--acc); color: #fff }
+.il-steps li.n { color: var(--ink); font-weight: 600 }
+.il-steps li.n::before { border-color: var(--acc); color: var(--acc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 18%, transparent) }
+.il-rows { list-style: none; display: flex; flex-direction: column; gap: 7px }
+.il-rows li { display: flex; align-items: center; gap: 9px; padding: 7px 9px; border: 1px solid #EEF3F8; border-radius: 10px }
+.il-rows li > div { flex: 1; min-width: 0 }
+.il-rows b { display: block; font-size: .76rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.il-rows em { font-style: normal; font-size: .64rem; font-weight: 700; color: var(--acc); background: var(--tint); padding: 3px 8px; border-radius: 999px; white-space: nowrap }
+.il-dot { width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0; background: var(--tint) }
+.il-hi { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .95rem; color: var(--ink) }
+.il-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
+.il-tiles span { font-size: .72rem; font-weight: 600; color: var(--ink); background: var(--tint); border-radius: 10px; padding: 12px 10px }
+.il-prog { list-style: none; display: flex; flex-direction: column; gap: 10px }
+.il-prog li > div { display: flex; justify-content: space-between; font-size: .74rem; color: var(--ink-mid); margin-bottom: 4px }
+.il-prog b { font-size: .74rem; color: var(--acc) }
+.il-prog i { display: block; height: 7px; border-radius: 99px; background: #EEF3F8; overflow: hidden }
+.il-prog em { display: block; height: 100%; width: var(--w); border-radius: inherit; background: var(--acc) }
+.il-bill { display: flex; flex-direction: column; gap: 10px }
+.il-bill .big { font-size: 1.3rem; letter-spacing: -.02em; color: var(--acc) }
+.il-btn { align-self: flex-start; font-family: 'Montserrat', sans-serif; font-size: .74rem; font-weight: 700; color: #fff; background: var(--acc); padding: 7px 14px; border-radius: 999px }
+.il-aging { display: flex; height: 16px; border-radius: 6px; overflow: hidden; gap: 2px }
+.il-aging span { width: var(--w); background: var(--c) }
+.il-legend { display: flex; justify-content: space-between; font-size: .62rem; color: var(--ink-dim) }
+
+@media (max-width: 1100px) { .subs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (max-width: 980px) {
+  .subs { display: none }
+  .section { scroll-margin-top: 140px }
+  .sidebar nav a em { display: none }
+}
+@media (max-width: 860px) {
+  .sec-banner { grid-template-columns: 1fr; padding: 1.4rem }
+  .sec-visual { max-width: 420px }
+}
+@media (prefers-reduced-motion: reduce) { .il-chip { animation: none } }
+
+/* ═══ Ficha de módulo ═══ */
+.card { cursor: pointer; position: relative }
+.card:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--acc, var(--blue)) }
+.card-more { display: inline-flex; align-items: center; gap: .35rem; margin-top: auto; padding-top: .3rem; font-family: 'Montserrat', sans-serif; font-size: .8rem; font-weight: 600; color: var(--acc, var(--blue)); opacity: .75; transition: opacity .2s, gap .2s }
+.card:hover .card-more, .card:focus-visible .card-more { opacity: 1; gap: .55rem }
+
+html.ficha-open { overflow: hidden }
+.ficha { position: fixed; inset: 0; z-index: 900 }
+.ficha-bg { position: absolute; inset: 0; background: rgba(11,22,34,.42); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); opacity: 0; transition: opacity .25s }
+.ficha-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(520px, 100%); background: #fff; box-shadow: -20px 0 60px rgba(11,33,56,.2); overflow-y: auto; transform: translateX(100%); transition: transform .35s var(--ease); outline: none }
+.ficha.in .ficha-bg { opacity: 1 }
+.ficha.in .ficha-panel { transform: none }
+.ficha-x { position: sticky; top: 14px; float: right; margin: 14px 14px 0 0; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: none; background: #F1F5F9; color: var(--ink-mid); display: grid; place-items: center; cursor: pointer; transition: background .2s }
+.ficha-x:hover { background: #E6EDF4; color: var(--ink) }
+.ficha-body { padding: 2rem 2rem 2.4rem; clear: both }
+.ficha-head { display: flex; align-items: center; gap: 1rem; margin-top: -1.2rem; margin-bottom: 1.1rem; padding-right: 2.5rem }
+.ficha-ico { width: 56px; height: 56px; border-radius: 18px; flex-shrink: 0; display: grid; place-items: center; background: var(--tint); color: var(--acc) }
+.ficha-ico svg { width: 28px; height: 28px; stroke: currentColor }
+.ficha-sub { font-family: 'Montserrat', sans-serif; font-size: .78rem; font-weight: 700; color: var(--acc) }
+.ficha-sub:hover { text-decoration: underline }
+.ficha-head h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 700; letter-spacing: -.025em; line-height: 1.15; color: var(--ink) }
+.ficha-desc { font-size: 1rem; line-height: 1.75; color: var(--ink-mid) }
+.ficha-visual { margin: 1.4rem 0 .4rem; padding: 1rem 1rem .2rem; border-radius: 22px; background: linear-gradient(135deg, var(--tint), #fff 90%) }
+.ficha-acts { display: flex; flex-direction: column; gap: .6rem; margin-top: 1.2rem }
+.ficha-demo, .ficha-wa { display: flex; justify-content: center; align-items: center; gap: .5rem; font-family: 'Montserrat', sans-serif; font-size: .95rem; font-weight: 600; padding: .95rem 1.2rem; border-radius: 999px; transition: transform .2s var(--ease), background .2s }
+.ficha-demo { background: var(--acc); color: #fff; box-shadow: 0 8px 20px color-mix(in srgb, var(--acc) 35%, transparent) }
+.ficha-demo:hover { transform: translateY(-2px) }
+.ficha-wa { color: #128C4A; background: #E9F8EF }
+.ficha-wa:hover { background: #D9F2E3 }
+.ficha-rel { margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--line) }
+.ficha-rel h3 { font-family: 'Montserrat', sans-serif; font-size: .9rem; font-weight: 700; color: var(--ink); margin-bottom: .8rem }
+.ficha-chips { display: flex; flex-wrap: wrap; gap: .5rem }
+.ficha-chips button { font: inherit; font-size: .82rem; font-weight: 600; color: var(--ink-mid); background: #F6F9FC; border: 1px solid #DDE6EF; border-radius: 999px; padding: .45rem .9rem; cursor: pointer; transition: all .2s }
+.ficha-chips button:hover { border-color: var(--acc); color: var(--acc); background: #fff }
+.ficha-note { margin-top: 1.4rem; font-size: .82rem; color: var(--ink-dim); line-height: 1.6 }
+@media (max-width: 600px) {
+  .ficha-panel { top: auto; left: 0; width: 100%; max-height: 90vh; border-radius: 24px 24px 0 0; transform: translateY(100%) }
+  .ficha-body { padding: 1.6rem 1.3rem 2rem }
+  .ficha-head h2 { font-size: 1.35rem }
+}
+@media (prefers-reduced-motion: reduce) { .ficha-panel, .ficha-bg { transition: none } }

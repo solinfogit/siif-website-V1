@@ -183,37 +183,105 @@ function moduleIconSvg(name, groupId) {
   return moduleIconMap[key] || iconSvg(name, groupId);
 }
 
+/* ── Utilidades para la ficha ── */
+function plainText(html) { const t = document.createElement('textarea'); t.innerHTML = html; return t.value; }
+function slug(html) { return plainText(html).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
+
 /* ── Render page ── */
 const sideNav = document.getElementById('side-nav');
 const sections = document.getElementById('sections');
+const subsGrid = document.getElementById('subs-grid');
 
-modulesData.forEach(group => {
+const PALETTE = [
+  ['#1264A8','#EAF3FB'], ['#0F9D8A','#E3F5F1'], ['#E08A1E','#FDF3E3'],
+  ['#7C5CD6','#F0ECFB'], ['#1E88D9','#E6F2FC'], ['#2E9E5B','#E5F5EB'],
+  ['#D9534F','#FCEDEC'], ['#B4457F','#FBEAF3'], ['#4F6B8A','#EDF1F6']
+];
+
+/* Ilustración de producto por subsistema (mini pantalla de SIIFWEB) */
+const OK = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.2 4.2L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const win = (title, body, chip) => `
+  <div class="il">
+    <div class="mw"><div class="mw-bar"><i></i><i></i><i></i><span>${title}</span></div><div class="mw-body">${body}</div></div>
+    ${chip ? `<div class="il-chip"><span class="il-ok">${OK}</span><div><b>${chip[0]}</b><small>${chip[1]}</small></div></div>` : ''}
+  </div>`;
+const bars = hs => `<div class="il-bars">${hs.map(h => `<span style="--h:${h}%"></span>`).join('')}</div>`;
+const rows = items => `<ul class="il-rows">${items.map(r => `<li><i class="il-dot"></i><div><b>${r[0]}</b><small>${r[1]}</small></div><em>${r[2]}</em></li>`).join('')}</ul>`;
+const prog = items => `<ul class="il-prog">${items.map(p => `<li><div><span>${p[0]}</span><b>${p[1]}%</b></div><i><em style="--w:${p[1]}%"></em></i></li>`).join('')}</ul>`;
+
+const ILLUS = {
+  financiero: win('Ejecución presupuestal 2026',
+    `<div class="il-kpis"><div><small>Ejecución</small><b>76,4%</b></div><div><small>Recaudo</small><b>$12.480 M</b></div></div>${bars([42,55,50,66,61,74,70,83,79,90])}`,
+    ['Cierre de mes', 'Estados financieros listos']),
+  contratacion: win('Contrato CT-2026-087',
+    `<ol class="il-steps"><li class="d">Estudio previo</li><li class="d">CDP expedido</li><li class="n">Firma del contrato</li><li>Registro presupuestal</li></ol>`,
+    ['Póliza aprobada', 'Hace 5 min']),
+  'recursos-fisicos': win('Inventario de bienes',
+    rows([['Computador portátil','Devolutivo · Placa 1042','Asignado'],['Resma papel carta','Suministro · Almacén','240 und'],['Sede administrativa','Inmueble · Avalúo 2026','Al día']])),
+  'recursos-humanos': win('Nómina · Noviembre',
+    rows([['Laura Restrepo','Profesional universitario','$4,2 M'],['Carlos Mejía','Técnico administrativo','$2,9 M'],['Ana Gómez','Auxiliar','$2,1 M']]),
+    ['Nómina pagada', '312 funcionarios']),
+  'oficina-virtual': win('Portal del funcionario',
+    `<p class="il-hi">Hola, Laura</p><div class="il-tiles"><span>Certificado laboral</span><span>Desprendible de pago</span><span>Mis vacaciones</span><span>Mis datos</span></div>`),
+  planeacion: win('Plan de desarrollo 2024–2027',
+    prog([['Educación', 82], ['Infraestructura vial', 64], ['Salud', 71], ['Medio ambiente', 48]])),
+  'rentas-municipales': win('Impuesto predial 2026',
+    `<div class="il-bill"><div><small>Ficha catastral</small><b>01-02-0345-0012</b></div><div><small>Total a pagar</small><b class="big">$1.284.300</b></div><span class="il-btn">Pagar en línea</span></div>`,
+    ['Pago recibido', 'PSE · Banco de Bogotá']),
+  'recuperacion-cartera': win('Cartera por edades',
+    `<div class="il-aging"><span style="--w:38%;--c:#2E9E5B"></span><span style="--w:27%;--c:#E8A33D"></span><span style="--w:21%;--c:#E07B39"></span><span style="--w:14%;--c:#D9534F"></span></div><div class="il-legend"><span>0–90 d</span><span>90–180</span><span>180–360</span><span>+360</span></div>${rows([['Acuerdo de pago 2026-031','12 cuotas · al día','Activo']])}`),
+  gesdoc: win('Gestión documental',
+    rows([['Resolución 0412','Firmada electrónicamente','Firmado'],['PQRS 2026-118','Respondida en término','Cerrada'],['Oficio 2026-2210','Radicado de salida','Enviado']]),
+    ['PQRS a tiempo', '98% este mes'])
+};
+
+modulesData.forEach((group, gi) => {
+  const [acc, tint] = PALETTE[gi % PALETTE.length];
+  const firstIcon = moduleIconSvg(group.modules[0].name, group.id);
+
   const navLink = document.createElement('a');
   navLink.href = `#${group.id}`;
-  navLink.textContent = group.title;
+  navLink.innerHTML = `<span>${group.title}</span><em>${group.modules.length}</em>`;
+  navLink.style.setProperty('--acc', acc);
   sideNav.appendChild(navLink);
+
+  const tile = document.createElement('a');
+  tile.className = 'sub-tile';
+  tile.href = `#${group.id}`;
+  tile.style.setProperty('--acc', acc);
+  tile.style.setProperty('--tint', tint);
+  tile.innerHTML = `<span class="sub-ico" aria-hidden="true">${firstIcon}</span><span class="sub-txt"><b>${group.title}</b><small>${group.modules.length} m&oacute;dulos</small></span><svg class="sub-go" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  subsGrid.appendChild(tile);
 
   const section = document.createElement('section');
   section.className = 'section';
   section.id = group.id;
+  section.style.setProperty('--acc', acc);
+  section.style.setProperty('--tint', tint);
 
   const cards = group.modules.map(module => `
-    <article class="card">
+    <article class="card" tabindex="0" role="button" data-mod="${slug(module.name)}" aria-label="Ver ficha de ${plainText(module.name)}">
       <div class="card-top">
         <div class="icon" aria-hidden="true">${moduleIconSvg(module.name, group.id)}</div>
         <div><h3>${module.name}</h3></div>
       </div>
       <p>${module.description}</p>
+      <span class="card-more">Ver ficha <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </article>
   `).join('');
 
   section.innerHTML = `
-    <div class="section-head">
-      <div>
+    <div class="sec-banner">
+      <div class="sec-copy">
+        <span class="sec-kicker">Subsistema</span>
         <h2>${group.title}</h2>
         <p>${group.intro}</p>
+        <div class="sec-meta">
+          <span class="section-count">${group.modules.length} m&oacute;dulos</span>
+          <a class="sec-demo" href="./#contacto">Ver en una demo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
       </div>
-      <div class="section-count">${group.modules.length} m&oacute;dulos</div>
+      <div class="sec-visual" aria-hidden="true">${ILLUS[group.id] || ''}</div>
     </div>
     <div class="cards">${cards}</div>
   `;
@@ -221,27 +289,38 @@ modulesData.forEach(group => {
   sections.appendChild(section);
 });
 
-/* ── Sidebar active tracking ── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    const link = sideNav.querySelector(`a[href="#${entry.target.id}"]`);
-    if (!link) return;
-    if (entry.isIntersecting) {
-      sideNav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
-      link.classList.add('active');
-    }
-  });
-}, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
-
-document.querySelectorAll('.section').forEach(section => observer.observe(section));
-const firstLink = sideNav.querySelector('a');
-if (firstLink) firstLink.classList.add('active');
+/* ── Subsistema activo según el scroll ── */
+const allSections = [...document.querySelectorAll('.section')];
+let lastActive = null;
+function updateActive() {
+  const offset = window.innerWidth <= 980 ? 150 : 120;
+  const visible = allSections.filter(sec => !sec.hidden);
+  let current = visible[0];
+  for (const sec of visible) {
+    if (sec.getBoundingClientRect().top - offset <= 0) current = sec; else break;
+  }
+  if (!current || current === lastActive) return;
+  lastActive = current;
+  sideNav.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+  const link = sideNav.querySelector('a.active');
+  // En móvil/tablet la barra es horizontal: centrar el subsistema activo
+  if (link && sideNav.scrollWidth > sideNav.clientWidth) {
+    sideNav.scrollTo({ left: link.offsetLeft - sideNav.clientWidth / 2 + link.offsetWidth / 2, behavior: 'smooth' });
+  }
+}
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => { updateActive(); ticking = false; });
+}, { passive: true });
+window.addEventListener('resize', updateActive);
+updateActive();
 
 /* ── Nav scroll effect (same as index) ── */
 const nav = document.getElementById('nav');
-const heroEl = document.querySelector('.hero');
 function checkNav() {
-  nav.classList.toggle('scrolled', window.scrollY > heroEl.offsetHeight - 80);
+  nav.classList.toggle('scrolled', window.scrollY > 10);
 }
 window.addEventListener('scroll', checkNav, { passive: true });
 checkNav();
@@ -284,3 +363,136 @@ if (accessBtn) {
     }
   });
 }
+
+/* ── Búsqueda de módulos ── */
+(function () {
+  const q = document.getElementById('mod-q');
+  const empty = document.getElementById('mod-empty');
+  if (!q) return;
+  const norm = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const cards = [...document.querySelectorAll('.card')].map(card => {
+    const h = card.querySelector('h3');
+    return { card, h, html: h.innerHTML, text: norm(card.textContent) };
+  });
+  q.addEventListener('input', () => {
+    const term = norm(q.value.trim());
+    cards.forEach(c => {
+      const hit = !term || c.text.includes(term);
+      c.card.hidden = !hit;
+      c.h.innerHTML = c.html;
+      if (term && hit) {
+        const plain = c.h.textContent, i = norm(plain).indexOf(term);
+        if (i > -1) {
+          const esc = x => x.replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[ch]);
+          c.h.innerHTML = esc(plain.slice(0, i)) + '<mark>' + esc(plain.slice(i, i + term.length)) + '</mark>' + esc(plain.slice(i + term.length));
+        }
+      }
+    });
+    let any = false;
+    document.querySelectorAll('.section').forEach(sec => {
+      const visible = sec.querySelectorAll('.card:not([hidden])').length;
+      sec.hidden = visible === 0;
+      const count = sec.querySelector('.section-count');
+      const total = sec.querySelectorAll('.card').length;
+      count.innerHTML = term ? visible + ' de ' + total + ' m&oacute;dulos' : total + ' m&oacute;dulos';
+      any = any || visible > 0;
+      const link = sideNav.querySelector(`a[href="#${sec.id}"]`);
+      if (link) link.hidden = visible === 0;
+    });
+    empty.hidden = any;
+    lastActive = null;
+    updateActive();
+  });
+}());
+
+/* ── Ficha de módulo ── */
+(function () {
+  const WA = '573163534433';
+  const index = [];
+  modulesData.forEach((g, gi) => g.modules.forEach(m => index.push({ g, gi, m, id: slug(m.name) })));
+
+  const sheet = document.createElement('div');
+  sheet.className = 'ficha';
+  sheet.hidden = true;
+  sheet.innerHTML = `
+    <div class="ficha-bg" data-close></div>
+    <aside class="ficha-panel" role="dialog" aria-modal="true" aria-labelledby="ficha-title" tabindex="-1">
+      <button class="ficha-x" type="button" data-close aria-label="Cerrar ficha"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <div class="ficha-body"></div>
+    </aside>`;
+  document.body.appendChild(sheet);
+  const body = sheet.querySelector('.ficha-body');
+  const panel = sheet.querySelector('.ficha-panel');
+  let lastFocus = null;
+
+  function render(item) {
+    const { g, gi, m } = item;
+    const [acc, tint] = PALETTE[gi % PALETTE.length];
+    panel.style.setProperty('--acc', acc);
+    panel.style.setProperty('--tint', tint);
+    const name = plainText(m.name);
+    const related = g.modules.filter(x => x !== m);
+    const waText = encodeURIComponent('Hola, quiero información del módulo ' + name + ' (' + plainText(g.title) + ') de SIIFWEB.');
+    body.innerHTML = `
+      <div class="ficha-head">
+        <span class="ficha-ico" aria-hidden="true">${moduleIconSvg(m.name, g.id)}</span>
+        <div>
+          <a class="ficha-sub" href="#${g.id}" data-close>${g.title}</a>
+          <h2 id="ficha-title">${m.name}</h2>
+        </div>
+      </div>
+      <p class="ficha-desc">${m.description}</p>
+      <div class="ficha-visual" aria-hidden="true">${ILLUS[g.id] || ''}</div>
+      <div class="ficha-acts">
+        <a class="ficha-demo" href="./?modulo=${encodeURIComponent(name)}#contacto">Solicitar una demo de este m&oacute;dulo</a>
+        <a class="ficha-wa" href="https://wa.me/${WA}?text=${waText}" target="_blank" rel="noreferrer">Preguntar por WhatsApp</a>
+      </div>
+      ${related.length ? `<div class="ficha-rel"><h3>Otros m&oacute;dulos de ${g.title}</h3><div class="ficha-chips">${related.map(x => `<button type="button" data-open="${slug(x.name)}">${x.name}</button>`).join('')}</div></div>` : ''}
+      <p class="ficha-note">Todos los m&oacute;dulos comparten la misma base de datos: lo que registra uno lo ven los dem&aacute;s, sin dobles digitaciones.</p>`;
+  }
+
+  function open(id, push) {
+    const item = index.find(x => x.id === id);
+    if (!item) return;
+    if (sheet.hidden) lastFocus = document.activeElement;
+    render(item);
+    sheet.hidden = false;
+    document.documentElement.classList.add('ficha-open');
+    requestAnimationFrame(() => sheet.classList.add('in'));
+    panel.scrollTop = 0;
+    panel.focus({ preventScroll: true });
+    if (push !== false) history.replaceState(null, '', '#modulo/' + id);
+  }
+  function close() {
+    if (sheet.hidden) return;
+    sheet.classList.remove('in');
+    document.documentElement.classList.remove('ficha-open');
+    setTimeout(() => { sheet.hidden = true; }, 250);
+    if (location.hash.startsWith('#modulo/')) history.replaceState(null, '', location.pathname + location.search);
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  }
+
+  document.addEventListener('click', e => {
+    const card = e.target.closest('.card[data-mod]');
+    if (card) { open(card.dataset.mod); return; }
+    const rel = e.target.closest('[data-open]');
+    if (rel) { open(rel.dataset.open); return; }
+    if (e.target.closest('[data-close]')) close();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') close();
+    const card = e.target.closest && e.target.closest('.card[data-mod]');
+    if (card && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); open(card.dataset.mod); }
+    // Mantener el foco dentro de la ficha
+    if (e.key === 'Tab' && !sheet.hidden) {
+      const f = [...panel.querySelectorAll('a,button')];
+      if (!f.length) return;
+      if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    }
+  });
+
+  // Enlace directo: modulos.html#modulo/presupuesto
+  const m = location.hash.match(/^#modulo\/(.+)$/);
+  if (m) open(decodeURIComponent(m[1]), false);
+}());

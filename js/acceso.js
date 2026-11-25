@@ -1,4 +1,4 @@
-/* ── Directorio Acceso Nuevo: buscador, filtro y render ── */
+/* ── Directorio Acceso aplicativo: buscador, filtro y render ── */
 (function () {
   const $search = document.getElementById('acc-search');
   const $dep    = document.getElementById('acc-dep');
@@ -16,11 +16,17 @@
   /* Iniciales para el avatar: dos letras significativas del nombre */
   const STOP = new Set(['de', 'del', 'la', 'las', 'los', 'el', 'y', 'e']);
   function initials(nombre) {
-    const words = nombre.split(/\s+/).filter(w => w && !STOP.has(norm(w)));
-    if (!words.length) return '?';
-    if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
-    return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+    const pick = txt => {
+      const words = txt.split(/[\s—–-]+/).filter(w => /[A-Za-zÁÉÍÓÚÑáéíóúñ]/.test(w) && !/\./.test(w) && !STOP.has(norm(w)));
+      if (!words.length) return '?';
+      if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+      return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+    };
+    // Si el nombre trae la abreviatura entre paréntesis, las iniciales salen de ahí
+    const abbr = nombre.match(/\(([^)]+)\)\s*$/);
+    return pick(abbr ? abbr[1] : nombre.replace(/\(.*?\)/g, ' '));
   }
+
 
   /* ── Select de departamentos (a partir de los datos) ── */
   [...new Set(ENTIDADES.map(e => e.departamento))]
@@ -42,13 +48,22 @@
   }
 
   function card(e) {
-    const pending = e.estado !== 'activo' || !e.url;
+    const active = e.estado === 'activo';
+    const hasSiif = active && !!e.url;
+    const hasSync = active && !!e.urlProcesos;
+    const pending = !hasSiif && !hasSync;
     const arrow = '<svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 9.5l7-7M9.5 2.5H4M9.5 2.5v5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    let action = pending
-      ? '<span class="acc-enter acc-enter--pending">Pr&oacute;ximamente</span>'
-      : '<a class="acc-enter" href="' + esc(e.url) + '" target="_blank" rel="noreferrer">Siifweb' + arrow + '</a>';
-    if (!pending && e.urlProcesos) {
-      action = '<a class="acc-enter acc-enter--alt" href="' + esc(e.urlProcesos) + '" target="_blank" rel="noreferrer">Procesos' + arrow + '</a>' + action;
+    const siifLabel = 'SIIFWEB<span class="plus-chip" aria-hidden="true">+</span>';
+    let action = '';
+    if (hasSync) {
+      action += '<a class="acc-enter acc-enter--alt" href="' + esc(e.urlProcesos) + '" target="_blank" rel="noreferrer">Synchrox' + arrow + '</a>';
+    }
+    if (hasSiif) {
+      action += '<a class="acc-enter" href="' + esc(e.url) + '" target="_blank" rel="noreferrer" aria-label="SIIFWEB+">' + siifLabel + arrow + '</a>';
+    } else if (hasSync) {
+      action += '<span class="acc-enter acc-enter--pending" title="SIIFWEB+ pr&oacute;ximamente">' + siifLabel + ' &middot; Pronto</span>';
+    } else {
+      action = '<span class="acc-enter acc-enter--pending">Pr&oacute;ximamente</span>';
     }
     return '<article class="acc-card' + (pending ? ' acc-card--pending' : '') + '">' +
       '<div class="acc-card-top">' +
