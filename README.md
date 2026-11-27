@@ -498,6 +498,14 @@ Encuentra el objeto del subsistema en `modulesData` por su `title` o `id`, y agr
 
 El icono SVG se asigna automáticamente por la función `getIcon(name)` según el nombre del módulo. Si el nombre no coincide con ningún icono predefinido, se usa un icono genérico de cuadrícula.
 
+**Después de cualquier cambio en `modulesData`, regenera la copia estática del catálogo:**
+
+```bash
+node tools/prerender-modulos.js
+```
+
+`modulos.html` trae los módulos en HTML simple para que los lean buscadores, IAs y vistas previas que no ejecutan JavaScript; la página la reemplaza al cargar por la versión interactiva. Si no corres el script, esa copia queda desactualizada.
+
 ---
 
 ### 8.8 Agregar o reemplazar imágenes
