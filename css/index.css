@@ -92,8 +92,8 @@
 
 .hero-eyebrow { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Montserrat', sans-serif; font-size: .78rem; font-weight: 600; color: var(--blue); background: var(--blue-soft); border: 1px solid rgba(18,100,168,.14); padding: .38rem .9rem; border-radius: 999px; margin-bottom: 1.6rem }
 .hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: #16A34A; box-shadow: 0 0 0 4px rgba(22,163,74,.16) }
-.hero h1 { font-size: clamp(2.4rem, 5.2vw, 4.1rem); font-weight: 700; color: var(--ink); line-height: 1.05; letter-spacing: -.035em; margin-bottom: 1.4rem }
-.hero h1 .grad { display: block; background: linear-gradient(90deg, #1264A8 0%, #1E88D9 45%, #0F9D8A 100%); -webkit-background-clip: text; background-clip: text; color: transparent }
+.hero h1 { font-size: clamp(2.3rem, 4.4vw, 3.6rem); font-weight: 700; color: var(--ink); line-height: 1.05; letter-spacing: -.035em; margin-bottom: 1.4rem }
+.hero h1 .grad { display: inline; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: linear-gradient(90deg, #1264A8 0%, #1E88D9 45%, #0F9D8A 100%); -webkit-background-clip: text; background-clip: text; color: transparent }
 .hero-sub { font-size: clamp(1rem, 1.25vw, 1.15rem); color: var(--ink-mid); line-height: 1.7; margin-bottom: 2.2rem; max-width: 44ch }
 .hero-sub strong { color: var(--ink); font-weight: 600 }
 .hero-acts { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center }
