@@ -190,6 +190,7 @@ function slug(html) { return plainText(html).normalize('NFD').replace(/[\u0300-\
 /* ── Render page ── */
 const sideNav = document.getElementById('side-nav');
 const sections = document.getElementById('sections');
+sections.innerHTML = ''; // quita la versión estática (tools/prerender-modulos.js)
 const subsGrid = document.getElementById('subs-grid');
 
 const PALETTE = [

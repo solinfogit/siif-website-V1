@@ -90,13 +90,13 @@ body { background: #F6F9FC }
 
 /* ── Responsive ── */
 @media (max-width: 980px) {
-  .layout { grid-template-columns: 1fr }
+  .layout { grid-template-columns: minmax(0, 1fr) }
   .sidebar { position: static; overflow: auto }
   .sidebar nav { flex-direction: row; flex-wrap: nowrap }
   .sidebar a { white-space: nowrap }
 }
 @media (max-width: 760px) {
-  .cards { grid-template-columns: 1fr }
+  .cards { grid-template-columns: minmax(0, 1fr) }
 }
 
 
@@ -236,7 +236,7 @@ body { background: #F6F9FC }
   .sidebar nav a em { display: none }
 }
 @media (max-width: 860px) {
-  .sec-banner { grid-template-columns: 1fr; padding: 1.4rem }
+  .sec-banner { grid-template-columns: minmax(0, 1fr); padding: 1.4rem }
   .sec-visual { max-width: 420px }
 }
 @media (prefers-reduced-motion: reduce) { .il-chip { animation: none } }
