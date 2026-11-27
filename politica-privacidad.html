@@ -55,7 +55,7 @@
       max-width: var(--site-max);
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 240px minmax(0, 1fr);
       gap: 4rem;
       align-items: start;
     }
@@ -173,7 +173,9 @@
     .cookie-badge--opt { background: rgba(122,155,180,.15); color: var(--ink-mid) }
 
     @media (max-width: 860px) {
-      .legal-layout { grid-template-columns: 1fr }
+      .legal-layout { grid-template-columns: minmax(0, 1fr) }
+      .cookie-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch }
+      .cookie-table th, .cookie-table td { min-width: 150px }
       .legal-toc { display: none }
     }
   </style>
