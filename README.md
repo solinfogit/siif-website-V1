@@ -508,6 +508,14 @@ node tools/prerender-modulos.js
 
 ---
 
+### 8.7.1 SEO para buscadores e IAs
+
+- `robots.txt` permite el acceso a todos los rastreadores y nombra explícitamente a los de ChatGPT, Claude, Gemini, Perplexity, Bing/Copilot y Apple.
+- `llms.txt` es un resumen del sitio en texto simple para asistentes de IA. **Si cambian los módulos, las sedes, las cifras o el contacto, actualízalo también.**
+- Las preguntas frecuentes del inicio (`#preguntas`) están repetidas en el bloque JSON-LD `FAQPage` de `index.html`: si cambias una respuesta, cámbiala en los dos lugares.
+
+---
+
 ### 8.8 Agregar o reemplazar imágenes
 
 1. Convierte la imagen a formato **WebP** (se recomienda usar [Squoosh](https://squoosh.app/) o similar).

@@ -1,4 +1,48 @@
+# siifweb.com — todo el sitio es público.
+# Se nombran explícitamente los rastreadores de buscadores y asistentes de IA
+# (ChatGPT, Claude, Gemini, Perplexity, Copilot/Bing, Apple) para que puedan
+# leerlo y citarlo.
+
 User-agent: *
+Allow: /
+
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Google (Gemini y AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Microsoft (Bing y Copilot; ChatGPT también usa el índice de Bing)
+User-agent: Bingbot
+Allow: /
+
+# Apple (Apple Intelligence)
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://www.siifweb.com/sitemap.xml

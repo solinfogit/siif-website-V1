@@ -535,3 +535,23 @@
 
 /* Al saltar a #contacto (menú "Solicitar demo" o ficha de módulo) la tarjeta queda a la vista */
 #contacto { scroll-margin-top: calc(84px - clamp(5rem, 10vw, 8.5rem)) }
+
+/* ── Preguntas frecuentes ── */
+.s-faq { background: var(--white); padding: clamp(4.5rem,9vw,7rem) var(--page-pad) clamp(3rem,6vw,4.5rem) }
+.faq-wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start }
+.faq-hd { position: sticky; top: 96px }
+.faq-hd a { color: var(--blue); font-weight: 600; text-decoration: underline; text-underline-offset: 3px }
+.faq-list { display: flex; flex-direction: column; gap: .7rem }
+.faq-item { background: #fff; border: 1px solid rgba(18,100,168,.10); border-radius: 18px; transition: box-shadow .3s var(--ease), border-color .3s }
+.faq-item[open] { border-color: transparent; box-shadow: 0 14px 34px rgba(11,33,56,.08) }
+.faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.05rem 1.3rem; font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: var(--ink); letter-spacing: -.01em }
+.faq-item summary::-webkit-details-marker { display: none }
+.faq-item summary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(18,100,168,.25); border-radius: 18px }
+.faq-item summary i { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--blue-soft); position: relative; transition: background .25s, transform .3s var(--ease) }
+.faq-item summary i::before, .faq-item summary i::after { content: ''; position: absolute; left: 50%; top: 50%; width: 11px; height: 2px; border-radius: 2px; background: var(--blue); transform: translate(-50%, -50%) }
+.faq-item summary i::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform .3s var(--ease) }
+.faq-item[open] summary i { background: var(--blue) }
+.faq-item[open] summary i::before, .faq-item[open] summary i::after { background: #fff }
+.faq-item[open] summary i::after { transform: translate(-50%, -50%) rotate(0deg) }
+.faq-item p { padding: 0 1.3rem 1.2rem; font-size: .95rem; line-height: 1.7; color: var(--ink-mid) }
+@media (max-width: 860px) { .faq-wrap { grid-template-columns: minmax(0, 1fr) } .faq-hd { position: static } }

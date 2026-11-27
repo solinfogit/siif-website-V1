@@ -52,7 +52,7 @@
       id: 'modulos',
       keys: ['módulos', 'modulos', 'módulo', 'funcionalidades', 'funciones', 'incluye', 'subsistemas', 'características'],
       q: '¿Qué módulos incluye?',
-      a: 'SIIFWEB cuenta con <strong>44 módulos</strong> en 9 subsistemas integrados: Presupuesto, Contabilidad Pública, Tesorería, Nómina y Personal, Gestión Contractual, Almacén, Bienes e Inventarios, Atención al Ciudadano y Gestión Documental. Cada módulo se comunica con los demás en tiempo real.'
+      a: 'SIIFWEB cuenta con <strong>44 módulos</strong> en 9 subsistemas integrados: Gestión financiera (presupuesto, contabilidad y tesorería), Contratación, Recursos físicos, Recursos humanos, Oficina virtual, Planeación, Rentas municipales, Recuperación de cartera y Gestión documental. Cada módulo se comunica con los demás en tiempo real.'
     },
     {
       id: 'precios',
