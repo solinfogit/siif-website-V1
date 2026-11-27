@@ -92,8 +92,8 @@
 
 .hero-eyebrow { display: inline-flex; align-items: center; gap: .55rem; font-family: 'Montserrat', sans-serif; font-size: .78rem; font-weight: 600; color: var(--blue); background: var(--blue-soft); border: 1px solid rgba(18,100,168,.14); padding: .38rem .9rem; border-radius: 999px; margin-bottom: 1.6rem }
 .hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: #16A34A; box-shadow: 0 0 0 4px rgba(22,163,74,.16) }
-.hero h1 { font-size: clamp(2.4rem, 5.2vw, 4.1rem); font-weight: 700; color: var(--ink); line-height: 1.05; letter-spacing: -.035em; margin-bottom: 1.4rem }
-.hero h1 .grad { display: block; background: linear-gradient(90deg, #1264A8 0%, #1E88D9 45%, #0F9D8A 100%); -webkit-background-clip: text; background-clip: text; color: transparent }
+.hero h1 { font-size: clamp(2.3rem, 4.4vw, 3.6rem); font-weight: 700; color: var(--ink); line-height: 1.05; letter-spacing: -.035em; margin-bottom: 1.4rem }
+.hero h1 .grad { display: inline; -webkit-box-decoration-break: clone; box-decoration-break: clone; background: linear-gradient(90deg, #1264A8 0%, #1E88D9 45%, #0F9D8A 100%); -webkit-background-clip: text; background-clip: text; color: transparent }
 .hero-sub { font-size: clamp(1rem, 1.25vw, 1.15rem); color: var(--ink-mid); line-height: 1.7; margin-bottom: 2.2rem; max-width: 44ch }
 .hero-sub strong { color: var(--ink); font-weight: 600 }
 .hero-acts { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center }
@@ -535,3 +535,23 @@
 
 /* Al saltar a #contacto (menú "Solicitar demo" o ficha de módulo) la tarjeta queda a la vista */
 #contacto { scroll-margin-top: calc(84px - clamp(5rem, 10vw, 8.5rem)) }
+
+/* ── Preguntas frecuentes ── */
+.s-faq { background: var(--white); padding: clamp(4.5rem,9vw,7rem) var(--page-pad) clamp(3rem,6vw,4.5rem) }
+.faq-wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start }
+.faq-hd { position: sticky; top: 96px }
+.faq-hd a { color: var(--blue); font-weight: 600; text-decoration: underline; text-underline-offset: 3px }
+.faq-list { display: flex; flex-direction: column; gap: .7rem }
+.faq-item { background: #fff; border: 1px solid rgba(18,100,168,.10); border-radius: 18px; transition: box-shadow .3s var(--ease), border-color .3s }
+.faq-item[open] { border-color: transparent; box-shadow: 0 14px 34px rgba(11,33,56,.08) }
+.faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.05rem 1.3rem; font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 600; color: var(--ink); letter-spacing: -.01em }
+.faq-item summary::-webkit-details-marker { display: none }
+.faq-item summary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(18,100,168,.25); border-radius: 18px }
+.faq-item summary i { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--blue-soft); position: relative; transition: background .25s, transform .3s var(--ease) }
+.faq-item summary i::before, .faq-item summary i::after { content: ''; position: absolute; left: 50%; top: 50%; width: 11px; height: 2px; border-radius: 2px; background: var(--blue); transform: translate(-50%, -50%) }
+.faq-item summary i::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform .3s var(--ease) }
+.faq-item[open] summary i { background: var(--blue) }
+.faq-item[open] summary i::before, .faq-item[open] summary i::after { background: #fff }
+.faq-item[open] summary i::after { transform: translate(-50%, -50%) rotate(0deg) }
+.faq-item p { padding: 0 1.3rem 1.2rem; font-size: .95rem; line-height: 1.7; color: var(--ink-mid) }
+@media (max-width: 860px) { .faq-wrap { grid-template-columns: minmax(0, 1fr) } .faq-hd { position: static } }

@@ -1,4 +1,65 @@
+# siifweb.com — todo el sitio es público.
+# Se nombran explícitamente los rastreadores de buscadores y asistentes de IA
+# (ChatGPT, Claude, Gemini, Perplexity, Copilot/Bing, Apple) para que puedan
+# leerlo y citarlo.
+
 User-agent: *
 Allow: /
+
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Google (Gemini y AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Microsoft (Bing y Copilot; ChatGPT también usa el índice de Bing)
+User-agent: Bingbot
+Allow: /
+
+# Apple (Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+
+# Raspadores que copian a gran escala y no aportan visibilidad en
+# buscadores ni en asistentes de IA. (robots.txt es voluntario: para un
+# bloqueo real hay que filtrarlos también en el hosting o el CDN.)
+User-agent: Bytespider
+User-agent: img2dataset
+User-agent: Diffbot
+User-agent: Omgilibot
+User-agent: Omgili
+User-agent: Timpibot
+User-agent: ImagesiftBot
+User-agent: DataForSeoBot
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: magpie-crawler
+User-agent: Scrapy
+Disallow: /
 
 Sitemap: https://www.siifweb.com/sitemap.xml

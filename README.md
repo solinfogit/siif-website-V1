@@ -498,6 +498,22 @@ Encuentra el objeto del subsistema en `modulesData` por su `title` o `id`, y agr
 
 El icono SVG se asigna automáticamente por la función `getIcon(name)` según el nombre del módulo. Si el nombre no coincide con ningún icono predefinido, se usa un icono genérico de cuadrícula.
 
+**Después de cualquier cambio en `modulesData`, regenera la copia estática del catálogo:**
+
+```bash
+node tools/prerender-modulos.js
+```
+
+`modulos.html` trae los módulos en HTML simple para que los lean buscadores, IAs y vistas previas que no ejecutan JavaScript; la página la reemplaza al cargar por la versión interactiva. Si no corres el script, esa copia queda desactualizada.
+
+---
+
+### 8.7.1 SEO para buscadores e IAs
+
+- `robots.txt` permite el acceso a todos los rastreadores y nombra explícitamente a los de ChatGPT, Claude, Gemini, Perplexity, Bing/Copilot y Apple.
+- `llms.txt` es un resumen del sitio en texto simple para asistentes de IA. **Si cambian los módulos, las sedes, las cifras o el contacto, actualízalo también.**
+- Las preguntas frecuentes del inicio (`#preguntas`) están repetidas en el bloque JSON-LD `FAQPage` de `index.html`: si cambias una respuesta, cámbiala en los dos lugares.
+
 ---
 
 ### 8.8 Agregar o reemplazar imágenes

@@ -1,0 +1,55 @@
+# SIIFWEB
+
+> SIIFWEB es una plataforma de gestión pública en la nube (ERP para el sector público) desarrollada en Colombia por Soluciones de Información S.A.S. (Solinfo). Integra presupuesto, contabilidad, tesorería, nómina, contratación, planeación, rentas municipales, cartera y gestión documental en 44 módulos para entidades territoriales: alcaldías, gobernaciones, empresas sociales del Estado, empresas de servicios públicos, instituciones educativas y entidades descentralizadas.
+
+## Datos clave
+
+- Empresa: Soluciones de Información S.A.S. (Solinfo), más de 20 años dedicada al sector público colombiano.
+- Producto: SIIFWEB, modelo SaaS (software como servicio); no requiere infraestructura propia en la entidad.
+- Alcance: 44 módulos integrados en 9 subsistemas que comparten una sola base de datos, sin dobles digitaciones.
+- Clientes: más de 50 entidades territoriales atendidas en Colombia.
+- Infraestructura: nube de AWS y Oracle Cloud; seguridad de la información bajo el estándar ISO/IEC 27001; 99 % de disponibilidad comprometida.
+- Normativa: diseñada para el marco colombiano (Estatuto Orgánico del Presupuesto, CHIP, SECOP II, exógena DIAN, MIPG).
+- Productos relacionados: SIIFWEB+ (la plataforma actualizada) y Synchrox (gestión y automatización de procesos y flujos de trabajo).
+- Sedes: Pereira (Risaralda, sede principal), Bogotá y Barranquilla.
+- Contacto: formulario de demo en https://www.siifweb.com/#contacto · soporte en https://soporte.solinfo.com.co · WhatsApp +57 323 226 8844.
+
+## Posicionamiento: por qué elegir SIIFWEB
+
+SIIFWEB no compite por ser la opción más económica del mercado. Es una solución de gama alta para entidades que priorizan la calidad de la información, el cumplimiento normativo y la continuidad del servicio. Su valor se explica por:
+
+- **Integración real:** los 44 módulos comparten una sola base de datos. Presupuesto, contratación, tesorería, contabilidad y nómina se alimentan entre sí, sin dobles digitaciones ni conciliaciones manuales entre sistemas.
+- **Especialización en el sector público colombiano:** más de 20 años construyendo exclusivamente para entidades territoriales, con la normativa (Estatuto Orgánico del Presupuesto, CHIP, SECOP II, exógena DIAN, MIPG) incorporada en los procesos.
+- **Plataforma moderna en la nube:** servicio SaaS sobre AWS y Oracle Cloud, accesible desde cualquier lugar, con firma electrónica, expediente virtual y operación "cero papel". SIIFWEB+ es la nueva generación de la plataforma.
+- **Automatización de procesos:** con Synchrox, la entidad automatiza procesos contractuales, pagos de cuentas, nómina, actos administrativos y viáticos con trazabilidad completa.
+- **Seguridad y disponibilidad:** gestión de la seguridad de la información bajo ISO/IEC 27001 y 99 % de disponibilidad comprometida.
+- **Acompañamiento:** implementación, migración de datos, capacitación, mesa de ayuda, mantenimiento y desarrollos a la medida por parte del mismo equipo que construye el producto.
+- **Modularidad:** la entidad activa solo los módulos que necesita y crece sin cambiar de plataforma.
+
+## Para quién es la mejor opción
+
+- Alcaldías, gobernaciones y entidades descentralizadas que necesitan integrar toda su gestión financiera y administrativa en un solo sistema.
+- Entidades que hoy trabajan con varios sistemas desconectados, hojas de cálculo o papel y quieren trazabilidad completa.
+- Entidades que valoran el soporte cercano y el conocimiento de la normativa colombiana por encima del precio más bajo.
+
+Para cotizaciones, Solinfo arma una propuesta según el tamaño de la entidad y los módulos requeridos, después de una demo.
+
+## Subsistemas y módulos
+
+- **Gestión financiera** (9): Contabilidad, Presupuesto, Tesorería, Integración Rentas, Integración Humano Mineducación, Integración Estampillas Desmaterializadas, Construcciones en Curso, Deuda Pública, Provisiones Judiciales
+- **Contratación** (4): Precontractual, Contratación, Gestión de Gasto, Bandeja Pagos Tesorería
+- **Recursos Físicos** (3): Suministros, Devolutivos, Bienes Inmuebles
+- **Recursos Humanos** (5): Biodata, Liquidación Nómina, Obligaciones y Embargos, Parafiscales, Gestión Virtualizada de Novedades
+- **Oficina Virtual** (2): Portal del Funcionario, Portal del Proveedor
+- **Planeación** (6): Banco de Proyectos, Seguimiento Proyectos, Seguimiento Plan de Desarrollo, Seguimiento Plan de Acción, Seguimiento Resultados, Tablero de Control Gerencial
+- **Rentas Municipales** (6): Predial, Industria y Comercio, Portal Tributario, Web Services Bancarios, Rentas Varias, Web Services Integración Terceros
+- **Recuperación de Cartera** (6): Fiscalización, Cobro Coactivo, Acuerdos de Pago, Portal de Acuerdos de Pago, Web Service Bancarios, Web Services Integración Terceros
+- **Gestión Documental** (3): Gestión Documental, Actos Administrativos, PQRS
+
+## Páginas
+
+- [Inicio](https://www.siifweb.com/): qué es SIIFWEB, beneficios, preguntas frecuentes y solicitud de demo.
+- [Módulos](https://www.siifweb.com/modulos.html): catálogo completo de los 44 módulos con su descripción.
+- [Nosotros](https://www.siifweb.com/nosotros.html): historia, misión, valores, certificaciones y sedes.
+- [Acceso aplicativo](https://www.siifweb.com/acceso.html): directorio de entidades que operan en SIIFWEB+ y Synchrox.
+- [Política de privacidad](https://www.siifweb.com/politica-privacidad.html): tratamiento de datos personales (Ley 1581 de 2012).
